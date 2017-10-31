@@ -1,0 +1,27 @@
+version: '2'
+services:
+  myapp:
+    image: 'bitnami/codeigniter:latest'
+    labels:
+      kompose.service.type: nodeport
+    ports:
+      - '8000:8000'
+    volumes:
+      - '.:/app'
+    environment:
+      - CODEIGNITER_PROJECT_NAME=fse-inventory
+    depends_on:
+      - mariadb
+  mariadb:
+    image: 'bitnami/mariadb:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+  phpmyadmin:
+    image: bitnami/phpmyadmin:latest
+    ports:
+      - 8181:80
+      - 4433:443
+    depends_on:
+      - mariadb
+    links:
+      - mariadb
