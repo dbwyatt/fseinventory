@@ -16,6 +16,10 @@ services:
     image: 'bitnami/mariadb:latest'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 4306:3306
+    volumes:
+      - ../fse-inventory-db:/bitnami
   phpmyadmin:
     image: bitnami/phpmyadmin:latest
     ports:
