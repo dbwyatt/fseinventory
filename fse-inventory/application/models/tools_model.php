@@ -9,6 +9,7 @@
         
         $query = $this->db->select('*')
                           ->from('tools')
+                          ->limit('20')
                           ->get();
 
         $data = $query->result_array();

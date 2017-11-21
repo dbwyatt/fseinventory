@@ -1,4 +1,4 @@
-<!-- <?php print_r($all_tools); ?> -->
+
 
 <style>
 	.main
@@ -11,6 +11,11 @@
 	{
 		padding: 20px;
 		background-color: white;
+		/*display: flex;*/
+	}
+	.content table 
+	{
+		display: flex;
 	}
 
 

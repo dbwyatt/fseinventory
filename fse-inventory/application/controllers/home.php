@@ -10,8 +10,8 @@ class home extends CI_Controller {
 
 		$data['all_tools'] = $all_tools;
 
-		//$this->load->header();
+		$this->load->view('header');
 		$this->load->view('home', $data);
-		//$this->load->footer();
+		$this->load->view('footer');
 	}
 }
