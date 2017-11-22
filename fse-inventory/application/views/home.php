@@ -3,15 +3,17 @@
 <style>
 	.main
 	{
-		padding-top: 200px;
-		margin: 0 100px 0 100px;
-		background-color: yellow;
+		/*padding-top: 200px;*/
+		/*margin: 0 100px 0 100px;*/
+		padding: 150px;
+		background-color: #F4F4F4;
 	}
 	.content
 	{
 		padding: 20px;
 		background-color: white;
 		/*display: flex;*/
+		box-shadow: 1px 1px 8px -2px grey;
 	}
 	.content table 
 	{

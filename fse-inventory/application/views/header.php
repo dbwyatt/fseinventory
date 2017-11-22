@@ -16,6 +16,28 @@
 ?>
 
 <style>
+	@font-face
+	{
+		font-family: "San Francisco";
+    	src: url(../fonts/SanFranciscoText-Regular.otf);
+	}
+	/*@font-face
+	{
+		font-family: San Francisco Regular;
+    	src: url(../sanfranciscoreg.rtf);
+	}
+	@font-face
+	{
+		font-family: San Francisco Regular;
+    	src: url(../sanfranciscoreg.rtf);
+	}
+	@font-face
+	{
+		font-family: San Francisco Regular;
+    	src: url(../sanfranciscoreg.rtf);
+	}*/
+
+
 	body
 	{
 		margin: 0;
@@ -27,6 +49,7 @@
 		display: flex;
 		width: 100%;
 		justify-content: center;
+	    border-bottom: 1px solid #009933;
 	}
 	#logo_container
 	{
@@ -49,11 +72,24 @@
 	}
 	#nav_main ul li
 	{
-		padding: 2px 5px;
+		/*padding: 5px 7.5px;*/
+		padding: 30px;
+		transition: .25s;
+	}
+	#nav_main ul li:hover
+	{
+		background-color: #009933;
+		color: white;
 	}
 	#nav_main ul li a
 	{
 		text-decoration: none;
+		/*transition: .25s;*/
+	}
+	#nav_main ul li a:hover 
+	{
+		/*background-color: #009933;
+		color: white;*/
 	}
 	.user_tools
 	{
