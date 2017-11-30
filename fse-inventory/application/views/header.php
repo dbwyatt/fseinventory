@@ -42,6 +42,7 @@
 	{
 		margin: 0;
 		padding: 0;
+		font-family: sans-serif;
 	}
 
 	#header_main
@@ -111,10 +112,9 @@
 		<ul>
 			<li><a href="home.php">Home</a></li>
 			<li> | </li> <!-- le pipe -->
-			<li><a href="home.php">Test1</a></li>
-			<li><a href="home.php">Test2</a></li>
-			<li><a href="home.php">Test3</a></li>
-			<li><a href="home.php">Test4</a></li>
+			<li><a href="home.php">Tools</a></li>
+			<li><a href="home.php">Office Equipment</a></li>
+			<li><a href="home.php">Vehicles</a></li>
 		</ul>
 	</nav>
 	<!-- </div> -->

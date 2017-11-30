@@ -23,6 +23,8 @@
 
 </style>
 
+<?php echo $_SERVER['QUERY_STRING']; ?>
+
 <div class="main">
 	<div class="content">
 		<table>
