@@ -223,7 +223,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 2;
+$config['log_threshold'] = 0;
 
 /*
 |--------------------------------------------------------------------------
@@ -379,9 +379,9 @@ $config['encryption_key'] = hex2bin('b924ddeace3398eb667720c227e87e4b');
 |
 */
 $config['sess_driver'] = 'database';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'ci_sessions';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = 'ci_session';
+$config['sess_save_path'] = 'ci_sessions';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
