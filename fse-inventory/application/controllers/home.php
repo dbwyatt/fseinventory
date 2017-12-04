@@ -12,9 +12,8 @@ class home extends MY_Controller {
 
 			$data['all_tools'] = $all_tools;
 
-			$this->load->view('header');
-			$this->load->view('home', $data);
-			$this->load->view('footer');
+			$this->template->setAll('FSE Inventory');
+			$this->template->load('home', $data);
 		}
 	}
 }
