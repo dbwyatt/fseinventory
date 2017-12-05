@@ -14,5 +14,9 @@
 }
 .content table 
 {
-	display: flex;
+	// display: flex;
+}
+
+#tools-table {
+	display: none;
 }
