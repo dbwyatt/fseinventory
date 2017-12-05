@@ -52,7 +52,7 @@ class Template {
 
 		if ($return) {
 			$payload = $this->CI->load->view("template/head", $this->template_data, TRUE);
-			$payload = $this->CI->load->view("template/header", array(), TRUE);
+			$payload .= $this->CI->load->view("template/header", array(), TRUE);
 			$payload .= $this->CI->load->view($view, $view_data, TRUE);
 			$payload .= $this->CI->load->view("template/footer", array(), TRUE);
 			return $payload;
