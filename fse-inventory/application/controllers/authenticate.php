@@ -278,19 +278,27 @@ class authenticate extends MY_Controller
 	public function login()
 	{
 		// Method should not be directly accessible
-		if( $this->uri->uri_string() == 'examples/login')
+		if( $this->uri->uri_string() == 'authenticate/login')
 			show_404();
 
+		
 		if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' )
 			$this->require_min_level(1);
 
 		$this->setup_login_form();
 
-		$html = $this->load->view('examples/page_header', '', TRUE);
-		$html .= $this->load->view('examples/login_form', '', TRUE);
-		$html .= $this->load->view('examples/page_footer', '', TRUE);
+		// $html = $this->load->view('examples/page_header', '', TRUE);
+		// $html .= $this->load->view('examples/login_form', '', TRUE);
+		// $html .= $this->load->view('examples/page_footer', '', TRUE);
 
-		echo $html;
+		// echo $html;
+
+		$data['user_array'] = array();
+		$data['user_array']['user_role'] = '';
+
+		$this->load->view('header');
+		$this->load->view('authenticate/login', $data);
+		$this->load->view('footer');
 	}
 
 	// --------------------------------------------------------------
