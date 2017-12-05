@@ -296,9 +296,8 @@ class authenticate extends MY_Controller
 		$data['user_array'] = array();
 		$data['user_array']['user_role'] = '';
 
-		$this->load->view('header');
-		$this->load->view('authenticate/login', $data);
-		$this->load->view('footer');
+		$this->template->setAll('Login');
+		$this->template->load('authenticate/login', $data);
 	}
 
 	// --------------------------------------------------------------

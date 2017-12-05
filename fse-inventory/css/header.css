@@ -1,24 +1,3 @@
-@font-face
-{
-	font-family: "San Francisco";
-	src: url(../fonts/SanFranciscoText-Regular.otf);
-}
-/*@font-face
-{
-	font-family: San Francisco Regular;
-	src: url(../sanfranciscoreg.rtf);
-}
-@font-face
-{
-	font-family: San Francisco Regular;
-	src: url(../sanfranciscoreg.rtf);
-}
-@font-face
-{
-	font-family: San Francisco Regular;
-	src: url(../sanfranciscoreg.rtf);
-}*/
-
 #header_main
 {
 	display: flex;
