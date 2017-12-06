@@ -14,7 +14,7 @@ class Template {
 		$this->default_title = 'FSE Inventory';
 	}
 	
-	private function auto_load() {
+	private function set_defaults() {
 		$this->add('_css', 'header');
 		$this->add('_css', 'footer');
 		$this->add('_css', 'global');
@@ -26,6 +26,10 @@ class Template {
 		if ( !$this->template_data['_title'] ) {
 			$this->template_data['_title'] = $this->default_title;
 		}
+	}
+
+	private function set_user_data() {
+		$this->set('_user_data', $this->CI->is_logged_in());
 	}
 
 	public function add($name, $value) {
@@ -45,7 +49,8 @@ class Template {
 	}
 
 	public function load($view = '', $view_data = array(), $return = FALSE) {
-		$this->auto_load();
+		$this->set_defaults();
+		$this->set_user_data();
 
 		//load the view as a string into 'contents'
 		//$this->set('payload', $this->CI->load->view($view, $view_data, TRUE));
