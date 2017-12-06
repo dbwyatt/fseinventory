@@ -3,7 +3,9 @@
 			</div>
 
 			<footer id="footer_main">
-				<p>Four Seasons Environmental, Inc. Copyright &copy; <?php echo date('Y'); ?></p>
+				<div class="footer_text_wrapper">
+					Four Seasons Environmental, Inc. Copyright &copy; <?php echo date('Y'); ?>
+				</div>
 			</footer>
 		</div>
 	</body>

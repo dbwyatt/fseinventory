@@ -26,11 +26,11 @@
 
 		if( $this->input->get(AUTH_LOGOUT_PARAM) )
 		{
+			//display logout notification
 			echo '
-				<div>
-					<p>
-						You have successfully logged out.
-					</p>
+				<div id="logout_status_message" class="alert alert-primary alert-dismissable" role="alert">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+					You have successfully logged out.
 				</div>
 			';
 		}

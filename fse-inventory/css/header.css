@@ -28,7 +28,7 @@
 {
 	/*padding: 5px 7.5px;*/
 	padding: 30px;
-	transition: .25s;
+	transition: .15s;
 }
 #nav_main ul li a:hover:not(.divider)
 {
@@ -53,4 +53,25 @@
 	margin: auto 0 auto 50px;
 	padding: 20px 40px;
 	background-color: lightgrey;
+	box-shadow: 1px 1px 8px -2px grey;
+}
+.user_tools ul
+{
+	list-style: none;
+	display: flex;
+	padding-left: 0;
+}
+.user_tools ul li a
+{
+	/*padding: 5px 7.5px;*/
+	padding: 38px 20px 24px 20px;
+	transition: .15s;
+	clip-path: polygon(0 100%, 0 0, 23% 0, 26% 1%, 28% 4%, 30% 8%, 100% 8%, 100% 100%);
+	text-decoration: none;
+	color: #595856;
+}
+.user_tools ul li a:hover 
+{
+	background-color: #FFD400;
+	color: black;
 }

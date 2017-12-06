@@ -8,39 +8,38 @@
 			</div>
 
 			<?php
-				// this checks if a user is logged in and an admin
-				// else do not show the admin navigation options
-				if( isset($user_array) && $user_array['user_role'] == 'admin')
+				// show all navigation for admins
+				if(isset($auth_role) && $auth_role == 'admin')
 				{
 			?>
-				<nav id="nav_main">
-					<ul>
-						<li><a href="home.php">Home</a></li>
-						<li><a class="divider">|</a></li> <!-- le pipe -->
-						<li><a href="home.php">Tools</a></li>
-						<li><a href="home.php">Office Equipment</a></li>
-						<li><a href="home.php">Vehicles</a></li>
-					</ul>
-				</nav>
+					<nav id="nav_main">
+						<ul>
+							<li><a href="<?php echo base_url('home'); ?>">Home</a></li>
+							<li><a class="divider">|</a></li> <!-- le pipe -->
+							<li><a href="<?php echo base_url('all_tools'); ?>">Tools</a></li>
+							<li><a href="<?php echo base_url('all_office'); ?>">Office Equipment</a></li>
+							<li><a href="<?php echo base_url('all_vehicles'); ?>">Vehicles</a></li>
+						</ul>
+					</nav>
 			<?php
 				}
 			?>
 
-			
 			<?php
-				// this is where a logged in user will be able to
-				// logout or go to their profile, etc., the user tools
-				if(isset($user_aray))
+				if(isset($auth_username))
 				{
 			?>
 					<div class="user_tools">	
-					
-						<!-- ACCOUNT / USER -->
-						<a href="<?php base_url($user_array['username']); ?>"><?php $user_array['username']; ?></a>
-
-						<!-- LOGOUT -->
-						<a href="<?php base_url('authenticate/logout'); ?>">Logout</a>
-
+						<ul>
+							<li>
+								<!-- ACCOUNT / USER -->
+								<a href="<?php echo base_url('profile/$auth_username'); ?>"><?php echo $auth_username; ?></a>
+							</li>
+							<li>
+								<!-- LOGOUT -->
+								<a href="<?php echo base_url('authenticate/logout'); ?>">Logout</a>
+							</li>
+						</ul>
 					</div>
 			<?php
 				}

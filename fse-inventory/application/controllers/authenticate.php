@@ -287,17 +287,11 @@ class authenticate extends MY_Controller
 
 		$this->setup_login_form();
 
-		// $html = $this->load->view('examples/page_header', '', TRUE);
-		// $html .= $this->load->view('examples/login_form', '', TRUE);
-		// $html .= $this->load->view('examples/page_footer', '', TRUE);
-
-		// echo $html;
-
-		$data['user_array'] = array();
-		$data['user_array']['user_role'] = '';
+		// grab data to send to the header ***** prolly go elsewhere tbh *****
+		$this->is_logged_in();
 
 		$this->template->setAll('Login');
-		$this->template->load('authenticate/login', $data);
+		$this->template->load('authenticate/login');
 	}
 
 	// --------------------------------------------------------------
