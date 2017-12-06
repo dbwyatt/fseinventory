@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Template {
+class Template extends MY_Controller {
 
 	private $template_data = array('_css' => array(), '_js' => array());
 	private $controller;
