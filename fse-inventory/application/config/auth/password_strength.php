@@ -77,5 +77,4 @@ $config['min_uppercase_chars_for_password'] = 1;
 
 $config['min_non_alphanumeric_chars_for_password'] = 0;
 
-/* End of file password_strength.php */
-/* Location: /community_auth/config/examples/password_strength.php */
+

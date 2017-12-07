@@ -4,10 +4,16 @@
 	<div id="body-wrapper">
 		<header id="header_main">
 			<div id="logo_container">
-				<img src="http://fseinc.net/images/01_home_03.gif">
+				<a href="<?php echo base_url('home'); ?>"><img src="http://fseinc.net/images/01_home_03.gif"></a>
 			</div>
 
 			<?php
+				//TEMP create_user access
+				if(! isset($auth_role)) { ?>
+					<a style="position: absolute;" href="<?php echo base_url('user_management/create_new_user'); ?>">Create Account</a>
+				<?php 
+				}
+
 				// show all navigation for admins
 				if(isset($auth_role) && $auth_role == 'admin')
 				{

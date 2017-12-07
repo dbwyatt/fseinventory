@@ -1,28 +1,12 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * Community Auth - Validation_callables Model
- *
- * Community Auth is an open source authentication application for CodeIgniter 3
- *
- * @package     Community Auth
- * @author      Robert B Gottier
- * @copyright   Copyright (c) 2011 - 2017, Robert B Gottier. (http://brianswebdesign.com/)
- * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
- * @link        http://community-auth.com
- */
+class validation_callables extends MY_Model {
 
-class Validation_callables extends MY_Model {
-
-	/**
-	 * undocumented method
-	 */
 	public function __construct()
 	{
 		parent::__construct();
 
-		$this->config->load('examples/password_strength');
+		$this->config->load('auth/password_strength');
 	}
 	
 	// -----------------------------------------------------------------------
@@ -86,6 +70,7 @@ class Validation_callables extends MY_Model {
 			return TRUE;
 		}
 		
+		// BOOTSTRAP NOTIFY will go here
 		$this->form_validation->set_message(
 			'_check_password_strength', 
 			'<span class="redfield">Password</span> must contain:
@@ -101,6 +86,3 @@ class Validation_callables extends MY_Model {
 	// --------------------------------------------------------------
 
 }
-
-/* End of file Validaton_callables.php */
-/* Location: /community_auth/models/examples/Validation_callables.php */

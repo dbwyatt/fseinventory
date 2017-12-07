@@ -1,19 +1,6 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * Community Auth - Examples Model
- *
- * Community Auth is an open source authentication application for CodeIgniter 3
- *
- * @package     Community Auth
- * @author      Robert B Gottier
- * @copyright   Copyright (c) 2011 - 2017, Robert B Gottier. (http://brianswebdesign.com/)
- * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
- * @link        http://community-auth.com
- */
-
-class Examples_model extends MY_Model {
+class authenticate_model extends MY_Model {
 
 	/**
 	 * Update a user record with data not from POST
@@ -85,7 +72,7 @@ class Examples_model extends MY_Model {
 		$this->load->library('form_validation');
 
 		// Load form validation rules
-		$this->load->model('examples/validation_callables');
+		$this->load->model('auth/validation_callables');
 		$this->form_validation->set_rules([
 			[
 				'field' => 'passwd',
@@ -200,5 +187,3 @@ class Examples_model extends MY_Model {
 
 }
 
-/* End of file Examples_model.php */
-/* Location: /community_auth/models/examples/Examples_model.php */

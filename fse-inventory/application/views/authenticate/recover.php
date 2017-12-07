@@ -147,5 +147,4 @@ if( isset( $show_form ) )
 
 	<?php
 }
-/* End of file recover_form.php */
-/* Location: /community_auth/views/examples/recover_form.php */
+?>

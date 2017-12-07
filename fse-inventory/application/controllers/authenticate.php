@@ -1,18 +1,6 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- * Community Auth - Examples Controller
- *
- * Community Auth is an open source authentication application for CodeIgniter 3
- *
- * @package     Community Auth
- * @author      Robert B Gottier
- * @copyright   Copyright (c) 2011 - 2017, Robert B Gottier. (http://brianswebdesign.com/)
- * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
- * @link        http://community-auth.com
- */
-
+// authentication controller powered by coummunity_auth
 class authenticate extends MY_Controller
 {
 	public function __construct()
@@ -34,7 +22,7 @@ class authenticate extends MY_Controller
 	{
 		if( $this->require_role('admin') )
 		{
-			redirect('home.php');
+			redirect(base_url('home'));
 		}
 	}
 	
@@ -86,14 +74,14 @@ class authenticate extends MY_Controller
 			// Form helper needed
 			$this->load->helper('form');
 
-			$page_content .= $this->load->view('examples/login_form', '', TRUE);
+			$page_content .= $this->load->view('authenticate/login', '', TRUE);
 		}
 
-		echo $this->load->view('examples/page_header', '', TRUE);
+		// echo $this->load->view('examples/page_header', '', TRUE);
 
-		echo $page_content;
+		// echo $page_content;
 
-		echo $this->load->view('examples/page_footer', '', TRUE);
+		// echo $this->load->view('examples/page_footer', '', TRUE);
 	}
 	
 	// -----------------------------------------------------------------------
@@ -163,42 +151,19 @@ class authenticate extends MY_Controller
 	
 	// -----------------------------------------------------------------------
 
-	/**
-	 * Most minimal user creation. You will of course make your
-	 * own interface for adding users, and you may even let users
-	 * register and create their own accounts.
-	 *
-	 * The password used in the $user_data array needs to meet the
-	 * following default strength requirements:
-	 *   - Must be at least 8 characters long
-	 *   - Must be at less than 72 characters long
-	 *   - Must have at least one digit
-	 *   - Must have at least one lower case letter
-	 *   - Must have at least one upper case letter
-	 *   - Must not have any space, tab, or other whitespace characters
-	 *   - No backslash, apostrophe or quote chars are allowed
-	 */
-	public function create_user()
+	// receive user_data from $POST on form submit via:
+	// views/user_management/create_new_user.php
+	public function create_user($user_data)
 	{
-		// Customize this array for your user
-		$user_data = [
-			'username'   => 'callmejed',
-			'passwd'     => 'Password1',
-			'email'      => 'callmejed@example.com',
-			'auth_level' => '9', // 9 if you want to login @ examples/index.
-		];
-
 		$this->is_logged_in();
-
-		echo $this->load->view('examples/page_header', '', TRUE);
 
 		// Load resources
 		$this->load->helper('auth');
-		$this->load->model('examples/examples_model');
-		$this->load->model('examples/validation_callables');
+		$this->load->model('auth/authenticate_model');
+		$this->load->model('auth/validation_callables');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_data( $user_data );
+		$this->form_validation->set_data($user_data);
 
 		$validation_rules = [
 			[
@@ -239,16 +204,16 @@ class authenticate extends MY_Controller
 			]
 		];
 
-		$this->form_validation->set_rules( $validation_rules );
+		$this->form_validation->set_rules($validation_rules);
 
-		if( $this->form_validation->run() )
+		if($this->form_validation->run())
 		{
 			$user_data['passwd']     = $this->authentication->hash_passwd($user_data['passwd']);
-			$user_data['user_id']    = $this->examples_model->get_unused_id();
+			$user_data['user_id']    = $this->authentication_model->get_unused_id();
 			$user_data['created_at'] = date('Y-m-d H:i:s');
 
 			// If username is not used, it must be entered into the record as NULL
-			if( empty( $user_data['username'] ) )
+			if(empty($user_data['username']))
 			{
 				$user_data['username'] = NULL;
 			}
@@ -256,15 +221,18 @@ class authenticate extends MY_Controller
 			$this->db->set($user_data)
 				->insert(db_table('user_table'));
 
-			if( $this->db->affected_rows() == 1 )
+			if($this->db->affected_rows() == 1) // BOOTSTRAP NOTIFY
 				echo '<h1>Congratulations</h1>' . '<p>User ' . $user_data['username'] . ' was created.</p>';
 		}
 		else
 		{
+			// BOOTSTRAP NOTIFY
 			echo '<h1>User Creation Error(s)</h1>' . validation_errors();
 		}
 
-		echo $this->load->view('examples/page_footer', '', TRUE);
+		// once user is successfully created, redirect them elsewhere
+		redirect(base_url('home'));
+
 	}
 	
 	// -----------------------------------------------------------------------
@@ -278,8 +246,8 @@ class authenticate extends MY_Controller
 	public function login()
 	{
 		// Method should not be directly accessible
-		if( $this->uri->uri_string() == 'authenticate/login')
-			show_404();
+		// if( $this->uri->uri_string() == 'authenticate/login')
+		// 	show_404();
 
 		
 		if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' )
@@ -292,6 +260,7 @@ class authenticate extends MY_Controller
 
 		$this->template->setAll('Login');
 		$this->template->load('authenticate/login');
+
 	}
 
 	// --------------------------------------------------------------
@@ -317,10 +286,10 @@ class authenticate extends MY_Controller
 	public function recover()
 	{
 		// Load resources
-		$this->load->model('examples/examples_model');
+		$this->load->model('auth/authenticate_model');
 
 		/// If IP or posted email is on hold, display message
-		if( $on_hold = $this->authentication->current_hold_status( TRUE ) )
+		if($on_hold = $this->authentication->current_hold_status(TRUE))
 		{
 			$view_data['disabled'] = 1;
 		}
@@ -329,10 +298,10 @@ class authenticate extends MY_Controller
 			// If the form post looks good
 			if( $this->tokens->match && $this->input->post('email') )
 			{
-				if( $user_data = $this->examples_model->get_recovery_data( $this->input->post('email') ) )
+				if($user_data = $this->authenticate_model->get_recovery_data($this->input->post('email')))
 				{
 					// Check if user is banned
-					if( $user_data->banned == '1' )
+					if($user_data->banned == '1')
 					{
 						// Log an error if banned
 						$this->authentication->log_error( $this->input->post('email', TRUE ) );
@@ -348,13 +317,13 @@ class authenticate extends MY_Controller
 						 * Method is called 4 times for a 88 character string, and then
 						 * trimmed to 72 characters
 						 */
-						$recovery_code = substr( $this->authentication->random_salt() 
+						$recovery_code = substr($this->authentication->random_salt() 
 							. $this->authentication->random_salt() 
 							. $this->authentication->random_salt() 
-							. $this->authentication->random_salt(), 0, 72 );
+							. $this->authentication->random_salt(), 0, 72);
 
 						// Update user record with recovery code and time
-						$this->examples_model->update_user_raw_data(
+						$this->authenticate_model->update_user_raw_data(
 							$user_data->user_id,
 							[
 								'passwd_recovery_code' => $this->authentication->hash_passwd($recovery_code),
@@ -366,7 +335,7 @@ class authenticate extends MY_Controller
 						$link_protocol = USE_SSL ? 'https' : NULL;
 
 						// Set URI of link
-						$link_uri = 'examples/recovery_verification/' . $user_data->user_id . '/' . $recovery_code;
+						$link_uri = 'authenticate/recovery_verification/' . $user_data->user_id . '/' . $recovery_code;
 
 						$view_data['special_link'] = anchor( 
 							site_url( $link_uri, $link_protocol ), 
@@ -389,11 +358,9 @@ class authenticate extends MY_Controller
 			}
 		}
 
-		echo $this->load->view('examples/page_header', '', TRUE);
+		$this->template->setAll('Recover');
+		$this->template->load('authenticate/recover', (isset($view_data)) ? $view_data : '');
 
-		echo $this->load->view('examples/recover_form', ( isset( $view_data ) ) ? $view_data : '', TRUE );
-
-		echo $this->load->view('examples/page_footer', '', TRUE);
 	}
 
 	// --------------------------------------------------------------
@@ -414,7 +381,7 @@ class authenticate extends MY_Controller
 		else
 		{
 			// Load resources
-			$this->load->model('examples/examples_model');
+			$this->load->model('auth/authenticate_model');
 
 			if( 
 				/**
@@ -432,7 +399,7 @@ class authenticate extends MY_Controller
 				 * Try to get a hashed password recovery 
 				 * code and user salt for the user.
 				 */
-				$recovery_data = $this->examples_model->get_recovery_verification_data( $user_id ) )
+				$recovery_data = $this->authenticate_model->get_recovery_verification_data( $user_id ) )
 			{
 				/**
 				 * Check that the recovery code from the 
@@ -469,15 +436,13 @@ class authenticate extends MY_Controller
 			 */
 			if( $this->tokens->match )
 			{
-				$this->examples_model->recovery_password_change();
+				$this->authenticate_model->recovery_password_change();
 			}
 		}
 
-		echo $this->load->view('examples/page_header', '', TRUE);
+		$this->template->setAll('Recover');
+		$this->template->load('authenticate/choose_password_form', (isset($view_data)) ? $view_data : '');
 
-		echo $this->load->view( 'examples/choose_password_form', $view_data, TRUE );
-
-		echo $this->load->view('examples/page_footer', '', TRUE);
 	}
 
 	// --------------------------------------------------------------
@@ -514,7 +479,7 @@ class authenticate extends MY_Controller
 					$.ajax({
 						type: 'post',
 						cache: false,
-						url: '" . site_url('examples/ajax_attempt_login', $link_protocol ) . "',
+						url: '" . site_url('authenticate/ajax_attempt_login', $link_protocol ) . "',
 						data: {
 							'login_string': $('#login_string').val(),
 							'login_pass': $('#login_pass').val(),
@@ -526,7 +491,7 @@ class authenticate extends MY_Controller
 							console.log(response);
 							if(response.status == 1){
 								$('form').replaceWith('<p>You are now logged in.</p>');
-								$('#login-link').attr('href','" . site_url('examples/logout', $link_protocol ) . "').text('Logout');
+								$('#login-link').attr('href','" . site_url('authenticate/logout', $link_protocol ) . "').text('Logout');
 								$('#ajax-login-link').parent().hide();
 							}else if(response.status == 0 && response.on_hold){
 								$('form').hide();
@@ -542,11 +507,9 @@ class authenticate extends MY_Controller
 			});
 		</script>";
 
-		$html = $this->load->view('examples/page_header', $data, TRUE);
-		$html .= $this->load->view('examples/ajax_login_form', $data, TRUE);
-		$html .= $this->load->view('examples/page_footer', '', TRUE);
+		$this->template->setAll('Login');
+		$this->template->load('authenticate/ajax_login_form');
 
-		echo $html;
 	}
 
 	// --------------------------------------------------------------
@@ -559,7 +522,7 @@ class authenticate extends MY_Controller
 		if( $this->input->is_ajax_request() )
 		{
 			// Allow this page to be an accepted login page
-			$this->config->set_item('allowed_pages_for_login', ['examples/ajax_attempt_login'] );
+			$this->config->set_item('allowed_pages_for_login', ['authenticate/ajax_attempt_login'] );
 
 			// Make sure we aren't redirecting after a successful login
 			$this->authentication->redirect_after_login = FALSE;

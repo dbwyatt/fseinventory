@@ -64,10 +64,12 @@
 				{
 			?>
 
-				<br />
+				<br>
+				<br>
 
-				<label id="login_rememberme_label" for="remember_me" class="form_label">Remember Me</label>
 				<input type="checkbox" id="remember_me" name="remember_me" value="yes" />
+				<label id="login_rememberme_label" for="remember_me" class="form_label">Remember Me</label>
+				
 
 			<?php
 				}

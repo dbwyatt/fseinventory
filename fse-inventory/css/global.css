@@ -77,3 +77,10 @@ ul {
 .login_form_wrapper form {
 	margin: 3%;
 }
+
+.form_label {
+	/*font-size: 20px;*/
+}
+#login_rememberme_label {
+	/*font-size: 12px;*/
+}
