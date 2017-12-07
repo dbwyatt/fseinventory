@@ -1,9 +1,53 @@
+@font-face
+{
+	font-family: "SanFrancisco";
+	src: url(../application/fonts/SanFrancisco-Regular.ttf);
+	font-style: normal;
+}
+@font-face
+{
+	font-family: "SanFrancisco-Bold";
+	src: url(../application/fonts/SanFrancisco-Bold.ttf);
+	font-weight: bold;
+}
+@font-face
+{
+	font-family: "SanFrancisco-RegularItalic";
+	src: url(../application/fonts/SanFrancisco-RegularItalic.ttf);
+	font-style: italic;
+}
+/*@font-face
+{
+	font-family: "SanFrancisco";
+	src: url(../application/fonts/SanFrancisco-Regular.ttf);
+}
+@font-face
+{
+	font-family: "SanFrancisco";
+	src: url(../application/fonts/SanFrancisco-Regular.ttf);
+}
+@font-face
+{
+	font-family: "SanFrancisco";
+	src: url(../application/fonts/SanFrancisco-Regular.ttf);
+}
+@font-face
+{
+	font-family: "SanFrancisco";
+	src: url(../application/fonts/SanFrancisco-Regular.ttf);
+}
+@font-face
+{
+	font-family: "SanFrancisco";
+	src: url(../application/fonts/SanFrancisco-Regular.ttf);
+}*/
+
 html,
 body {
 	margin:0;
 	padding:0;
 	height:100%;
-	font-family: sans-serif;
+	font-family: "SanFrancisco";
 }
 
 #body-wrapper {
@@ -13,8 +57,30 @@ body {
 
 #body-content {
 	padding-bottom:100px; /* Height of the footer element */
+	/*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 
 ul {
 	margin: initial;
+}
+
+
+
+.login_form_wrapper {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    /*width: 20%;*/
+}
+.login_form_wrapper form {
+	margin: 3%;
+}
+
+.form_label {
+	/*font-size: 20px;*/
+}
+#login_rememberme_label {
+	/*font-size: 12px;*/
 }

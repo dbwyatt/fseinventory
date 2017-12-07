@@ -12,3 +12,7 @@
 	bottom:0;
 	left:0;
 }
+
+.footer_text_wrapper {
+	margin: auto 40px; /* #mobilefriendly */
+}

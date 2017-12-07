@@ -178,7 +178,7 @@ $config['encrypt_all_cookies'] = TRUE;
 |
 */
 
-$config['allow_remember_me'] = FALSE;
+$config['allow_remember_me'] = TRUE;
 
 /*
 | -----------------------------------------------------------------
@@ -297,7 +297,7 @@ $config['show_login_form_on_logout'] = TRUE;
 | they will be redirected to. The default is to be redirected to the home page.
 */
 
-$config['default_login_redirect'] = 'home.php';
+$config['default_login_redirect'] = 'home';
 
 /*
 | -----------------------------------------------------------------
@@ -330,7 +330,7 @@ $config['redirect_to_https'] = FALSE;
 | Make sure to remove any file extension, as this string is passed to config->load().
 */
 
-$config['login_form_validation_file'] = 'form_validation/examples/login';
+$config['login_form_validation_file'] = 'form_validation/login';
 
 /*
 | -----------------------------------------------------------------
