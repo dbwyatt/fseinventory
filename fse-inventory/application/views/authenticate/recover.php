@@ -1,150 +1,139 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-/**
- * Community Auth - Recover Form View
- *
- * Community Auth is an open source authentication application for CodeIgniter 3
- *
- * @package     Community Auth
- * @author      Robert B Gottier
- * @copyright   Copyright (c) 2011 - 2017, Robert B Gottier. (http://brianswebdesign.com/)
- * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
- * @link        http://community-auth.com
- */
-?>
-
-<h1>Account Recovery</h1>
-
-<?php
-if( isset( $disabled ) )
-{
-	echo '
-		<div style="border:1px solid red;">
-			<p>
-				Account Recovery is Disabled.
-			</p>
-			<p>
-				If you have exceeded the maximum login attempts, or exceeded
-				the allowed number of password recovery attempts, account recovery 
-				will be disabled for a short period of time. 
-				Please wait ' . ( (int) config_item('seconds_on_hold') / 60 ) . ' 
-				minutes, or contact us if you require assistance gaining access to your account.
-			</p>
+<div class="container ">
+	<div class="row justify-content-center padding_large">
+		<div class="col-sm-8">
+			<h1>Account Recovery</h1>
+			<hr>
 		</div>
-	';
-}
-else if( isset( $banned ) )
-{
-	echo '
-		<div style="border:1px solid red;">
-			<p>
-				Account Locked.
-			</p>
-			<p>
-				You have attempted to use the password recovery system using 
-				an email address that belongs to an account that has been 
-				purposely denied access to the authenticated areas of this website. 
-				If you feel this is an error, you may contact us  
-				to make an inquiry regarding the status of the account.
-			</p>
-		</div>
-	';
-}
-else if( isset( $confirmation ) )
-{
-	echo '
-		<div style="border:1px solid green;">
-			<p>
-				Congratulations, you have created an account recovery link.
-			</p>
-			<p>
-				<b>Please note</b>: The account recovery link would normally be placed in an email, 
-				and you would not see it here on the screen. This is to limit the code in the 
-				Examples controller, and keep your focus on learning Community Auth, but give you 
-				an idea of how to implement account recovery. <b>When you do end up writing code to send 
-				the recovery link to an email address, you will want to delete it from this view, 
-				delete these instructions, and instead have a simple message similar to the following</b>:
-			</p>
-			<p>
-				"We have sent you an email with instructions on how 
-				to recover your account."
-			</p>
-			<p>
-				This is the account recovery link:
-			</p>
-			<p>' . $special_link . '</p>
-		</div>
-	';
-}
-else if( isset( $no_match ) )
-{
-	echo '
-		<div  style="border:1px solid red;">
-			<p class="feedback_header">
-				Supplied email did not match any record.
-			</p>
-		</div>
-	';
-
-	$show_form = 1;
-}
-else
-{
-	echo '
-		<p>
-			If you\'ve forgotten your password and/or username, 
-			enter the email address used for your account, 
-			and we will send you an e-mail 
-			with instructions on how to access your account.
-		</p>
-	';
-
-	$show_form = 1;
-}
-if( isset( $show_form ) )
-{
-	?>
-
-		 <?php echo form_open(); ?>
-			<div>
-				<fieldset>
-					<legend>Enter your account's email address:</legend>
-					<div>
-
-						<?php
-							// EMAIL ADDRESS *************************************************
-							echo form_label('Email Address','email', ['class'=>'form_label'] );
-
-							$input_data = [
-								'name'		=> 'email',
-								'id'		=> 'email',
-								'class'		=> 'form_input',
-								'maxlength' => 255
-							];
-							echo form_input($input_data);
-						?>
-
-					</div>
-				</fieldset>
-				<div>
-					<div>
-
-						<?php
-							// SUBMIT BUTTON **************************************************************
-							$input_data = [
-								'name'  => 'submit',
-								'id'    => 'submit_button',
-								'value' => 'Send Email'
-							];
-							echo form_submit($input_data);
-						?>
-
-					</div>
-				</div>
-			</div>
-		</form>
+	</div>
 
 	<?php
-}
-?>
+		if(isset($disabled))
+		{ ?>
+			<div class="row justify-content-center">
+				<div class="col-sm-8">
+					<p>
+						Account Recovery is Disabled.
+					</p>
+					<p>
+						If you have exceeded the maximum login attempts, or exceeded
+						the allowed number of password recovery attempts, account recovery 
+						will be disabled for a short period of time. 
+						Please wait <?php echo ((int)config_item('seconds_on_hold') / 60 ); ?> 
+						minutes, or contact an administrator if you require assistance gaining access to your account.
+					</p>
+				</div>
+			</div>
+	<?php
+		}
+		else if(isset($banned))
+		{
+	?>
+			<div class="row justify-content-center">
+				<div class="col-sm-8">
+					<p>
+						Account Locked.
+					</p>
+					<p>
+						You have attempted to use the password recovery system using 
+						an email address that belongs to an account that has been 
+						purposely denied access to the authenticated areas of this website. 
+						If you feel this is an error, you may contact an administrator  
+						to make an inquiry regarding the status of the account.
+					</p>
+				</div>
+			</div>
+	<?php
+		}
+		else if(isset($confirmation))
+		{ 
+	?>
+			<div class="row justify-content-center">
+				<div class="col-sm-8">
+					<p>
+						Congratulations, you have created an account recovery link.
+					</p>
+					<p>
+						<b>Please note</b>: The account recovery link would normally be placed in an email, 
+						and you would not see it here on the screen. This is to limit the code in the 
+						Examples controller, and keep your focus on learning Community Auth, but give you 
+						an idea of how to implement account recovery. <b>When you do end up writing code to send 
+						the recovery link to an email address, you will want to delete it from this view, 
+						delete these instructions, and instead have a simple message similar to the following</b>:
+					</p>
+					
+					<p>"We have sent you an email with instructions on how to recover your account."</p>
+
+					<p>Please click the following link so we can help you access your account:</p>
+					<?php echo $special_link; ?>
+				</div>
+			</div>
+	<?php
+		}
+		else if(isset($no_match)) // BOOTSTRAP NOTIFY
+		{
+	?>
+			<div class="row justify-content-center">
+				<div class="col-sm-8">
+					<p class="feedback_header">
+						Supplied email did not match any record.
+					</p>
+				</div>
+			</div>
+	<?php
+			$show_form = 1;
+		}
+		else
+		{
+	?>
+			<div class="row justify-content-center">
+				<div class="col-sm-8">
+					<br>
+					<p>
+						If you've forgotten your password and/or username, 
+						enter the email address used for your account, 
+						and we will send you an e-mail 
+						with instructions on how to access your account.
+					</p>
+					<br>
+				</div>
+			</div>
+	<?php
+			$show_form = 1;
+		}
+		if(isset($show_form))
+		{
+	?>
+			<div class="row justify-content-center">
+				<div class="col-sm-6 form_styled_container">
+					<!-- NEED EMAIL FEATURE BUILT -->
+					<?php echo form_open(); ?>
+						<div class="row justify-content-center">
+							<fieldset>
+								<legend class="padding_medium">Enter your account's email address</legend>
+
+								<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address">
+							</fieldset>
+						</div>
+						
+						<div class="row justify-content-center padding_top_large">
+							<button type="submit" id="submit_button" class="btn btn-primary">Send Email</button>
+						</div>
+
+					</form>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-sm-8">
+						<p class="lightgrey">If you do not remember the email your account is associated with, please contact administrative support.</p>
+					</div>
+				</div>
+
+			</div>
+
+	<?php
+		}
+	?>
+
+</div>

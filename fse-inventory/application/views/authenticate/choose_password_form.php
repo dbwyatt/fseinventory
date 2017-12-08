@@ -1,180 +1,161 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-/**
- * Community Auth - Choose Password Form View
- *
- * Community Auth is an open source authentication application for CodeIgniter 3
- *
- * @package     Community Auth
- * @author      Robert B Gottier
- * @copyright   Copyright (c) 2011 - 2017, Robert B Gottier. (http://brianswebdesign.com/)
- * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
- * @link        http://community-auth.com
- */
-?>
-
-<h1>Account Recovery - Stage 2</h1>
-
-<?php
-
-$showform = 1;
-
-if( isset( $validation_errors ) )
-{
-	echo '
-		<div style="border:1px solid red;">
-			<p>
-				The following error occurred while changing your password:
-			</p>
-			<ul>
-				' . $validation_errors . '
-			</ul>
-			<p>
-				PASSWORD NOT UPDATED
-			</p>
+<div class="container">
+	<div class="row justify-content-center padding_large">
+		<div class="col-sm-8">
+			<h1>Account Recovery</h1>
+			<hr>
 		</div>
-	';
-}
-else
-{
-	$display_instructions = 1;
-}
+	</div>
 
-if( isset( $validation_passed ) )
-{
-	echo '
-		<div style="border:1px solid green;">
-			<p>
-				You have successfully changed your password.
-			</p>
-			<p>
-				You can now <a href="/' . LOGIN_PAGE . '">login</a>
-			</p>
-		</div>
-	';
 
-	$showform = 0;
-}
-if( isset( $recovery_error ) )
-{
-	echo '
-		<div style="border:1px solid red;">
-			<p>
-				No usable data for account recovery.
-			</p>
-			<p>
-				Account recovery links expire after 
-				' . ( (int) config_item('recovery_code_expiration') / ( 60 * 60 ) ) . ' 
-				hours.<br />You will need to use the 
-				<a href="/examples/recover">Account Recovery</a> form 
-				to send yourself a new link.
-			</p>
-		</div>
-	';
+		<?php
+			
+			$showform = 1;
 
-	$showform = 0;
-}
-if( isset( $disabled ) )
-{
-	echo '
-		<div style="border:1px solid red;">
-			<p>
-				Account recovery is disabled.
-			</p>
-			<p>
-				You have exceeded the maximum login attempts or exceeded the 
-				allowed number of password recovery attempts. 
-				Please wait ' . ( (int) config_item('seconds_on_hold') / 60 ) . ' 
-				minutes, or contact us if you require assistance gaining access to your account.
-			</p>
-		</div>
-	';
-
-	$showform = 0;
-}
-if( $showform == 1 )
-{
-	if( isset( $recovery_code, $user_id ) )
-	{
-		if( isset( $display_instructions ) )
-		{
-			if( isset( $username ) )
+			if(isset($validation_errors))
 			{
-				echo '<p>
-					Your login user name is <i>' . $username . '</i><br />
-					Please write this down, and change your password now:
-				</p>';
+		?>
+				<div class="row justify-content-center">
+					<div class="col-sm-8">
+						<p>The following error occurred while changing your password:</p>
+						<ul>
+							<?php echo $validation_errors; ?>
+						</ul>
+						<p>PASSWORD NOT UPDATED</p>
+					</div>
+				</div>
+		<?php
 			}
 			else
 			{
-				echo '<p>Please change your password now:</p>';
+				$display_instructions = 1;
 			}
-		}
 
+			if(isset($validation_passed))
+			{
 		?>
-			<div id="form">
-				<?php echo form_open(); ?>
-					<fieldset>
-						<legend>Step 2 - Choose your new password</legend>
-						<div>
+				<div class="row justify-content-center">
+					<div class="col-sm-8">
+						<p>You have successfully changed your password.</p>
+						<p>You can now <a href="<?php echo base_url(LOGIN_PAGE); ?>">login</a></p>
+					</div>
+				</div>
+		<?php
 
-							<?php
-								// PASSWORD LABEL AND INPUT ********************************
-								echo form_label('Password','passwd', ['class'=>'form_label']);
+				$showform = 0;
 
-								$input_data = [
-									'name'       => 'passwd',
-									'id'         => 'passwd',
-									'class'      => 'form_input password',
-									'max_length' => config_item('max_chars_for_password')
-								];
-								echo form_password($input_data);
-							?>
+			}
+			if(isset($recovery_error))
+			{
+		?>
+				<div class="row justify-content-center">
+					<div class="col-sm-8">
+						<p>No usable data for account recovery.</p>
+						<p>
+							Account recovery links expire after <?php echo ((int)config_item('recovery_code_expiration') / ( 60 * 60 )); ?> hours.
+							<br>
+							You will need to use the <a href="<?php echo base_url('authenticate/recover'); ?>">Account Recovery</a> form to send yourself a new link.
+						</p>
+					</div>
+				</div>
+		<?php
 
-						</div>
-						<div>
+				$showform = 0;
 
-							<?php
-								// CONFIRM PASSWORD LABEL AND INPUT ******************************
-								echo form_label('Confirm Password','passwd_confirm', ['class'=>'form_label']);
+			}
+			if(isset($disabled))
+			{
+		?>
+				<div class="row justify-content-center">
+					<div class="col-sm-8">
+						<p>Account recovery is disabled.</p>
+						<p>You have exceeded the maximum login attempts or exceeded the allowed number of password recovery attempts. Please wait <?php echo ((int)config_item('seconds_on_hold') / 60); ?> minutes, or contact an administrator if you require assistance gaining access to your account.</p>
+					</div>
+				</div>
+		<?php
 
-								$input_data = [
-									'name'       => 'passwd_confirm',
-									'id'         => 'passwd_confirm',
-									'class'      => 'form_input password',
-									'max_length' => config_item('max_chars_for_password')
-								];
-								echo form_password($input_data);
-							?>
+				$showform = 0;
 
-						</div>
-					</fieldset>
-					<div>
-						<div>
-
-							<?php
-								// RECOVERY CODE *****************************************************************
-								echo form_hidden('recovery_code',$recovery_code);
-
-								// USER ID *****************************************************************
-								echo form_hidden('user_identification',$user_id);
-
-								// SUBMIT BUTTON **************************************************************
-								$input_data = [
-									'name'  => 'form_submit',
-									'id'    => 'submit_button',
-									'value' => 'Change Password'
-								];
-								echo form_submit($input_data);
-							?>
-
+			}
+			if($showform == 1)
+			{
+				if(isset($recovery_code, $user_id))
+				{
+					if(isset($display_instructions))
+					{
+						if(isset($username))
+						{
+		?>
+					<div class="row justify-content-center">
+						<div class="col-sm-8">
+							<p>Your login user name is <i><?php echo $username; ?></i></p>
+							<p>Please write this down, and change your password now:</p>
 						</div>
 					</div>
-				</form>
-			</div>
+		<?php	
+						}
+						else
+						{
+		?>
+							<div class="row justify-content-center">
+								<div class="col-sm-8">
+									<p>Please change your password now:</p>
+								</div>
+							</div>
 		<?php
-	}
-}
-/* End of file choose_password_form.php */
-/* Location: /community_auth/views/examples/choose_password_form.php */
+						}
+					}
+
+		?>
+					<div class="row justify-content-center">
+						<div class="col-sm-8 form_styled_container">
+							
+							<?php echo form_open(); ?>
+								
+								<div class="row justify-content-center">
+									<fieldset>
+										<legend>Choose your new password</legend>
+
+										<!-- New Password Field -->
+										<label for="passwd" class="col-form-label">New Password</label>
+									    <input class="form-control" type="password" id="passwd" name="passwd" placeholder="New password" maxlength="<?php echo config_item('max_chars_for_password'); ?>">
+
+									    <br>
+
+										<!-- New Password Field -->
+										<label for="passwd_confirm" class="col-form-label">Confirm New Password</label>
+									    <input class="form-control" type="password" id="passwd_confirm" name="passwd_confirm" placeholder="Confirm new password" maxlength="<?php echo config_item('max_chars_for_password'); ?>">
+
+									</fieldset>
+								</div>
+								
+								<div class="row justify-content-center">
+									<div class="col-sm-8">
+
+										<?php
+											// RECOVERY CODE *****************************************************************
+											echo form_hidden('recovery_code',$recovery_code);
+
+											// USER ID *****************************************************************
+											echo form_hidden('user_identification',$user_id);
+
+											// SUBMIT BUTTON **************************************************************
+										?>
+										
+										<div class="row justify-content-center padding_top_large">
+											<button type="submit" id="submit_button" class="btn btn-primary">Change Password</button>
+										</div>
+
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+		<?php
+				}
+			}
+		?>
+	</div>
+</div>

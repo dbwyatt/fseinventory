@@ -1,19 +1,16 @@
 
-<div class="login_form_wrapper"> <!-- wrapper for login form -->
+<div class="content"> <!-- wrapper for login form -->
+	
 	<?php
 
-	// if( ! isset( $optional_login ) )
-	// {
-	// 	echo '<h1>Login</h1>';
-	// }
-
 	// if the user is good to go, allow the to try logging in
-	if( ! isset( $on_hold_message ) )
+	if(!isset($on_hold_message))
 	{
-		if( isset( $login_error_mesg ) )
+		if(isset($login_error_mesg))
 		{
-			echo '
-				<div style="border:1px solid red;">
+	?>
+			<div class="row justify-content-center padding_medium">
+				<div class="col-6">
 					<p>
 						Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . ': Invalid Username, Email Address, or Password.
 					</p>
@@ -21,70 +18,69 @@
 						Username, email address and password are all case sensitive.
 					</p>
 				</div>
-			';
+			</div>
+	<?php
 		}
 
-		if( $this->input->get(AUTH_LOGOUT_PARAM) )
+		if($this->input->get(AUTH_LOGOUT_PARAM))
 		{
-			//display logout notification
-			echo '
-				<div id="logout_status_message" class="alert alert-primary alert-dismissable" role="alert">
-					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					You have successfully logged out.
+			//display logout notification BOOTSTRAP NOTIFY
+	?>
+			<div class="row justify-content-center padding_medium">
+				<div class="col-6">
+					<div id="logout_status_message" class="alert alert-primary alert-dismissable" role="alert">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						You have successfully logged out.
+					</div>
 				</div>
-			';
+			</div>
+	<?php
 		}
 
 
+		// <form> begin
+		echo form_open($login_url, ['class' => 'std-form']);
+	?>
+			<div class="row justify-content-center padding_large">
+				<div class="col-sm-3 form_styled_container">
+					<!-- Username Field -->
+					<label for="login_string" class="col-form-label">Username or Email</label>
+					<input type="text" class="form-control" id="login_string" placeholder="Username or email">
 
-	// <form> begin
-	echo form_open( $login_url, ['class' => 'std-form'] ); ?>
+					<br>
 
-		<div>
+					<!-- Password Field -->
+					<label for="login_pass" class="col-form-label">Password</label>
+				    <input class="form-control" type="password" id="login_pass" placeholder="Password"
+					    <?php if(config_item('max_chars_for_password') > 0)
+								echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
+						?> readonly="readonly" onfocus="this.removeAttribute('readonly');">
 
-			<!-- Username Field -->
-			<label id="login_username_label" for="login_string" class="form_label">Username or Email</label>
-			<br>
-			<input type="text" name="login_string" id="login_string" class="form_input" maxlength="255" />
+					<br>
 
-			<br>
-			<br>
+					<?php
+						if(config_item('allow_remember_me'))
+						{
+					?>
+							<input type="checkbox" id="remember_me" name="remember_me" value="yes" />
+							<label id="login_rememberme_label" for="remember_me" class="form_label">Remember Me</label>
+					<?php
+						}
+					?>
 
-			<!-- Password Field -->
-			<label id="login_password_label" for="login_pass" class="form_label">Password</label>
-			<br>
-			<input type="password" name="login_pass" id="login_pass" class="form_input password" 
-				<?php if( config_item('max_chars_for_password') > 0 )
-						echo 'maxlength="' . config_item('max_chars_for_password') . '"'; ?> 
-					readonly="readonly" onfocus="this.removeAttribute('readonly');" />
+					<br>
 
+					<div class="row justify-content-center padding_top_medium">
+						<button type="submit" class="btn btn-primary" id="submit_button">Login</button>
+					</div>
 
-			<?php
-				if( config_item('allow_remember_me') )
-				{
-			?>
+					<div class="row justify-content-center padding_top_medium">
+						<a class="lightgrey" href="<?php echo site_url('authenticate/recover'); ?>">Can't access your account?</a>
+					</div>
 
-				<br>
-				<br>
-
-				<input type="checkbox" id="remember_me" name="remember_me" value="yes" />
-				<label id="login_rememberme_label" for="remember_me" class="form_label">Remember Me</label>
-				
-
-			<?php
-				}
-			?>
-
-			<p>
-				<a href="<?php echo site_url('authenticate/recover'); ?>">Can't access your account?</a>
-			</p>
-
-
-			<input type="submit" name="submit" value="Login" id="submit_button"  />
-
-		</div>
-
-	</form>
+				</div>
+			</div>
+		</form>
 
 	<?php
 
