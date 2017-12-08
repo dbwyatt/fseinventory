@@ -1,5 +1,9 @@
 <!-- begin header -->
 
+<?php if(isset($auth_username)) { ?>
+	<script src="https://widget.battleforthenet.com/widget.js" async></script>
+	<?php } ?>
+
 <body>
 	<div id="body-wrapper">
 		<header id="header_main">
@@ -39,7 +43,7 @@
 						<ul>
 							<li>
 								<!-- ACCOUNT / USER -->
-								<a href="<?php echo base_url('profile/$auth_username'); ?>"><?php echo $auth_username; ?></a>
+								<a href="<?php echo base_url('user_management/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
 							</li>
 							<li>
 								<!-- LOGOUT -->

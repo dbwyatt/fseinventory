@@ -66,7 +66,57 @@ ul {
 	margin: initial;
 }
 
+.form_container {
+	margin: 5% 20%;
+}
+.form_styled_container {
+	padding: 36px;
+	margin: 20px 100px;
+	background-color: white;
+	box-shadow: 1px 1px 8px -2px grey;
+}
 
+.right {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+
+.padding_small {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.padding_medium {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.padding_large {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.padding_top_small {
+	padding-top: 10px;
+}
+.padding_top_medium {
+	padding-top: 20px;
+}
+.padding_top_large {
+	padding-top: 30px;
+}
+.padding_bottom_small {
+	padding-bottom: 10px;
+}
+.padding_bottom_medium {
+	padding-bottom: 20px;
+}
+.padding_bottom_large {
+	padding-bottom: 30px;
+}
+
+.lightgrey {
+	color: #ADADAD;
+}
 
 .login_form_wrapper {
 	display: flex;
