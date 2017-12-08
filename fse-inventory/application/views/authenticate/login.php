@@ -54,7 +54,7 @@
 				    <input class="form-control" name="login_pass" type="password" id="login_pass" placeholder="Password"
 					    <?php if(config_item('max_chars_for_password') > 0)
 								echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
-						?> readonly="readonly" onfocus="this.removeAttribute('readonly');">
+						?>>
 
 					<br>
 
