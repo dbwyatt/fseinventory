@@ -1,5 +1,5 @@
 
-<div class="content"> <!-- wrapper for login form -->
+<div class="container">
 	
 	<?php
 
@@ -10,7 +10,7 @@
 		{
 	?>
 			<div class="row justify-content-center padding_medium">
-				<div class="col-6">
+				<div class="col-sm-6">
 					<p>
 						Login Error #<?php echo $this->authentication->login_errors_count; ?>/<?php echo config_item('max_allowed_attempts'); ?>: Invalid Username, Email Address, or Password.
 					</p>
@@ -27,7 +27,7 @@
 			//display logout notification BOOTSTRAP NOTIFY
 	?>
 			<div class="row justify-content-center padding_medium">
-				<div class="col-6">
+				<div class="col-sm-6">
 					<div id="logout_status_message" class="alert alert-primary alert-dismissable" role="alert">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						You have successfully logged out.
@@ -42,7 +42,7 @@
 		echo form_open($login_url, ['class' => 'std-form']);
 	?>
 			<div class="row justify-content-center padding_large">
-				<div class="col-sm-3 form_styled_container">
+				<div class="col-sm-9 col-md-5 form_styled_container">
 					<!-- Username Field -->
 					<label for="login_string" class="col-form-label">Username or Email</label>
 					<input type="text" name="login_string" class="form-control" id="login_string" maxlength="255" placeholder="Username or email">
