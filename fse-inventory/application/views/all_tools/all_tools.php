@@ -3,11 +3,11 @@
 <div class="main">
 	<div class="content">
 		<div class="loading">Loading...</div>
-		<table id="tools-table">
+		<table id="tools-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<?php
-					foreach($tool_columns as $column) {
+					foreach($tools_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";
@@ -18,7 +18,7 @@
 			<tfoot>
 				<tr>
 				<?php
-					foreach($tool_columns as $column) {
+					foreach($tools_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";

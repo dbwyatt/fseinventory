@@ -14,14 +14,22 @@ class Template extends MY_Controller {
 		$this->default_title = 'FSE Inventory';
 	}
 	
-	private function set_defaults() {
+	private function set_defaults($view_path) {
+		$views = explode('/', $view_path);
+		if ( count($views) > 1 && $views[0] === $views[1] ) {
+			array_pop($views);
+		}
+
 		$this->add('_css', 'header');
 		$this->add('_css', 'footer');
 		$this->add('_css', 'global');
-		$this->add('_css', $this->controller);
 
 		$this->add('_js', 'global');
-		$this->add('_js', $this->controller);
+		
+		foreach($views as $view) {
+			$this->add('_css', $view);
+			$this->add('_js', $view);
+		}
 
 		if ( !$this->template_data['_title'] ) {
 			$this->template_data['_title'] = $this->default_title;
@@ -49,7 +57,7 @@ class Template extends MY_Controller {
 	}
 
 	public function load($view = '', $view_data = array(), $return = FALSE) {
-		$this->set_defaults();
+		$this->set_defaults($view);
 		$this->set_user_data();
 
 		//load the view as a string into 'contents'

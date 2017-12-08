@@ -1,0 +1,29 @@
+<?php class offices_model extends CI_Model {
+
+	public function __construct() {
+ 		$this->load->database(); 
+	}
+	
+	public function get_columns() {
+		$result = $this->db->list_fields('offices');
+		foreach($result as $field) {
+			$data[] = ucwords(str_replace('_', ' ', $field));
+		}
+		return $data;
+	}
+
+	public function select_all_from_offices()
+	{        
+        
+        $query = $this->db->select('*')
+                          ->from('offices')
+                          ->limit('30')
+                          ->get();
+
+        $data = $query->result_array();
+
+
+       	return $data;
+	}
+
+}
