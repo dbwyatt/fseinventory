@@ -3,11 +3,11 @@
 <div class="main">
 	<div class="content">
 		<div class="loading">Loading...</div>
-		<table id="vehicles-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<table id="office-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<?php
-					foreach($vehicles_columns as $column) {
+					foreach($office_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";
@@ -18,7 +18,7 @@
 			<tfoot>
 				<tr>
 				<?php
-					foreach($vehicles_columns as $column) {
+					foreach($office_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";
@@ -28,11 +28,11 @@
 			</tfoot>
 			<tbody>
 				<?php
-					foreach($all_vehicles as $column => $vehicles)
+					foreach($all_office as $column => $office)
 					{
 						echo "<tr>";
-						foreach($vehicles as $v)
-							echo "<td>$v </td>";
+						foreach($office as $o)
+							echo "<td>$o </td>";
 						echo "</tr>";
 					}
 				?>

@@ -17,7 +17,6 @@
         
         $query = $this->db->select('*')
                           ->from('vehicles')
-                          ->limit('30')
                           ->get();
 
         $data = $query->result_array();

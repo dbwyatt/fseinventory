@@ -14,7 +14,7 @@ class all_tools extends MY_Controller {
 			$data['all_tools'] = $all_tools;
 			$data['tools_columns'] = $tools_columns;
 
-			$this->template->setAll('FSE Inventory', array('home'));
+			$this->template->setAll('FSE Inventory: Tools', array('home'));
 			$this->template->load('all_tools/all_tools', $data);
 		}
 	}

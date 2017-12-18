@@ -1,9 +1,5 @@
 <!-- begin header -->
 
-<?php if(isset($auth_username)) { ?>
-	<script src="https://widget.battleforthenet.com/widget.js" async></script>
-	<?php } ?>
-
 <body>
 	<div id="body-wrapper">
 		<header id="header_main">

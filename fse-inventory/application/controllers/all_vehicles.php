@@ -14,7 +14,7 @@ class all_vehicles extends MY_Controller {
 			$data['all_vehicles'] = $all_vehicles;
 			$data['vehicles_columns'] = $vehicles_columns;
 
-			$this->template->setAll('FSE Inventory');
+			$this->template->setAll('FSE Inventory: Vehicles', array('home'));
 			$this->template->load('all_vehicles/all_vehicles', $data);
 		}
 	}
