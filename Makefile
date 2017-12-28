@@ -11,6 +11,7 @@ run: rm
 	docker run -d -p 8000:8000 --network=$(NETWORK) -v $(pwd):/app -e CODEIGNITER_PROJECT_NAME=fse-inventory --name $(APP_CONTAINER) bitnami/codeigniter:latest
 
 rm:
+	docker network rm $(NETWORK) || true
 	docker rm -f $(MARIADB_CONTAINER) || true
 	docker rm -f $(PHPMYADMIN_CONTAINER) || true
 	docker rm -f $(APP_CONTAINER) || true
