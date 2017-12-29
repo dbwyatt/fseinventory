@@ -113,7 +113,7 @@
 							<fieldset>
 								<legend class="padding_medium">Enter your account's email address</legend>
 
-								<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address">
+								<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address" required>
 							</fieldset>
 						</div>
 						

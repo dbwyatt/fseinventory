@@ -119,13 +119,13 @@
 
 										<!-- New Password Field -->
 										<label for="passwd" class="col-form-label">New Password</label>
-									    <input class="form-control" type="password" id="passwd" name="passwd" placeholder="New password" maxlength="<?php echo config_item('max_chars_for_password'); ?>">
+									    <input class="form-control" type="password" id="passwd" name="passwd" placeholder="New password" maxlength="<?php echo config_item('max_chars_for_password'); ?>" required>
 
 									    <br>
 
 										<!-- New Password Field -->
 										<label for="passwd_confirm" class="col-form-label">Confirm New Password</label>
-									    <input class="form-control" type="password" id="passwd_confirm" name="passwd_confirm" placeholder="Confirm new password" maxlength="<?php echo config_item('max_chars_for_password'); ?>">
+									    <input class="form-control" type="password" id="passwd_confirm" name="passwd_confirm" placeholder="Confirm new password" maxlength="<?php echo config_item('max_chars_for_password'); ?>" required>
 
 									</fieldset>
 								</div>
