@@ -4,7 +4,7 @@
 	<div id="body-wrapper">
 		<header id="header_main">
 			<div id="logo_container">
-				<a href="<?php echo base_url('home'); ?>"><img src="http://fseinc.net/images/01_home_03.gif"></a>
+				<a href="<?php echo base_url('home'); ?>"><img src="http://files.fseinfo.net/fse_logo.jpg"></a>
 			</div>
 
 			<?php

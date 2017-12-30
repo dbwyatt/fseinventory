@@ -45,13 +45,13 @@
 				<div class="col-sm-9 col-md-5 form_styled_container">
 					<!-- Username Field -->
 					<label for="login_string" class="col-form-label">Username or Email</label>
-					<input type="text" name="login_string" class="form-control" id="login_string" maxlength="255" placeholder="Username or email">
+					<input type="text" name="login_string" class="form-control" id="login_string" maxlength="255" placeholder="Username or email" required>
 
 					<br>
 
 					<!-- Password Field -->
 					<label for="login_pass" class="col-form-label">Password</label>
-				    <input class="form-control" name="login_pass" type="password" id="login_pass" placeholder="Password"
+				    <input class="form-control" name="login_pass" type="password" id="login_pass" placeholder="Password" required
 					    <?php if(config_item('max_chars_for_password') > 0)
 								echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
 						?>>
