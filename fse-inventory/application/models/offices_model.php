@@ -1,4 +1,4 @@
-<?php class office_model extends CI_Model {
+<?php class offices_model extends CI_Model {
 
 	public function __construct() {
  		$this->load->database(); 

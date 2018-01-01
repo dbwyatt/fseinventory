@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class all_vehicles extends MY_Controller {
+class AllVehicles extends MY_Controller {
 
 	public function index()
 	{
