@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class authenticate_model extends MY_Model {
+class Authenticate_model extends MY_Model {
 
 	/**
 	 * Update a user record with data not from POST
