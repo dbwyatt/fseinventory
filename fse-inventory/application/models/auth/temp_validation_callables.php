@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class validation_callables extends MY_Model {
+class Validation_callables extends MY_Model {
 
 	public function __construct()
 	{

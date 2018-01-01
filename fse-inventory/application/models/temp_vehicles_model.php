@@ -1,4 +1,4 @@
-<?php class vehicles_model extends CI_Model {
+<?php class Vehicles_model extends CI_Model {
 
 	public function __construct() {
  		$this->load->database(); 
