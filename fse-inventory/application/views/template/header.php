@@ -10,7 +10,7 @@
 			<?php
 				//TEMP create_user access
 				if(! isset($auth_role)) { ?>
-					<a style="position: absolute;" href="<?php echo base_url('user_management/create_new_user'); ?>">Create Account</a>
+					<a style="position: absolute;" href="<?php echo base_url('usermanagement/create_new_user'); ?>">Create Account</a>
 				<?php 
 				}
 
@@ -22,9 +22,9 @@
 						<ul>
 							<li><a href="<?php echo base_url('home'); ?>">Home</a></li>
 							<li><a class="divider">|</a></li> <!-- le pipe -->
-							<li><a href="<?php echo base_url('all_tools'); ?>">Tools</a></li>
-							<li><a href="<?php echo base_url('all_office'); ?>">Office Equipment</a></li>
-							<li><a href="<?php echo base_url('all_vehicles'); ?>">Vehicles</a></li>
+							<li><a href="<?php echo base_url('tools'); ?>">Tools</a></li>
+							<li><a href="<?php echo base_url('offices'); ?>">Office Equipment</a></li>
+							<li><a href="<?php echo base_url('vehicles'); ?>">Vehicles</a></li>
 						</ul>
 					</nav>
 			<?php
@@ -39,7 +39,7 @@
 						<ul>
 							<li>
 								<!-- ACCOUNT / USER -->
-								<a href="<?php echo base_url('user_management/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
+								<a href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
 							</li>
 							<li>
 								<!-- LOGOUT -->

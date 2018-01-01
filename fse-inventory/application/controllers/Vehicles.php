@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AllVehicles extends MY_Controller {
+class Vehicles extends MY_Controller {
 
 	public function index()
 	{
@@ -15,7 +15,7 @@ class AllVehicles extends MY_Controller {
 			$data['vehicles_columns'] = $vehicles_columns;
 
 			$this->template->setAll('FSE Inventory: Vehicles', array('home'));
-			$this->template->load('all_vehicles/all_vehicles', $data);
+			$this->template->load('vehicles/vehicles', $data);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AllOffices extends MY_Controller {
+class Offices extends MY_Controller {
 
 	public function index()
 	{
@@ -15,7 +15,7 @@ class AllOffices extends MY_Controller {
 			$data['office_columns'] = $office_columns;
 
 			$this->template->setAll('FSE Inventory: Offices', array('home'));
-			$this->template->load('all_offices/all_offices', $data);
+			$this->template->load('offices/offices', $data);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 	  <div class="card-body">
 	    <h4 class="card-title">Tools</h4>
 	    <p class="card-text">View all tools</p>
-	    <a href="/AllTools" class="btn btn-primary">Go to Tools</a>
+	    <a href="<?php echo base_url('tools'); ?>" class="btn btn-primary">Go to Tools</a>
 	  </div>
 	    <div class="card-footer">
 	    	<small class="text-muted"></small>
@@ -18,7 +18,7 @@
 	  <div class="card-body">
 	    <h4 class="card-title">Offices</h4>
 	    <p class="card-text">View all Offices</p>
-	    <a href="/AllOffices" class="btn btn-primary">Go to Offices</a>
+	    <a href="<?php echo base_url('offices'); ?>" class="btn btn-primary">Go to Offices</a>
 	  </div>
 	    <div class="card-footer">
 	    	<small class="text-muted"></small>
@@ -30,7 +30,7 @@
 	  <div class="card-body">
 	    <h4 class="card-title">Vehicles</h4>
 	    <p class="card-text">View all Vehicles</p>
-	    <a href="/AllVehicles" class="btn btn-primary">Go to Vehicles</a>
+	    <a href="<?php echo base_url('vehicles'); ?>" class="btn btn-primary">Go to Vehicles</a>
 	  </div>
 	    <div class="card-footer">
 	    	<small class="text-muted"></small>

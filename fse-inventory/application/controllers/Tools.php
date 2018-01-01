@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AllTools extends MY_Controller {
+class Tools extends MY_Controller {
 
 	public function index()
 	{
@@ -15,7 +15,7 @@ class AllTools extends MY_Controller {
 			$data['tools_columns'] = $tools_columns;
 
 			$this->template->setAll('FSE Inventory: Tools', array('home'));
-			$this->template->load('all_tools/all_tools', $data);
+			$this->template->load('tools/tools', $data);
 		}
 	}
 }
