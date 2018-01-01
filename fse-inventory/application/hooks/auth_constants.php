@@ -37,7 +37,7 @@ function auth_constants(){
 | 
 */
 
-	define('LOGIN_PAGE', 'authenticate/login');
+	define('LOGIN_PAGE', 'Authenticate/login');
 
 /*
 | -----------------------------------------------------------------
