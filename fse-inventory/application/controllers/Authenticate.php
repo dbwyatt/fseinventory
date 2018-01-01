@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 // authentication controller powered by coummunity_auth
-class authenticate extends MY_Controller
+class Authenticate extends MY_Controller
 {
 	public function __construct()
 	{
