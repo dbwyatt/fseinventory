@@ -1,4 +1,4 @@
-APPLICATION_PATH=$(pwd)
+APPLICATION_PATH=$(PWD)
 
 APP_CONTAINER=fseinventory_app
 MARIADB_CONTAINER=fseinventory_mariadb
