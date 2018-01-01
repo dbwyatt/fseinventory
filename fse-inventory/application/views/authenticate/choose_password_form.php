@@ -55,7 +55,7 @@
 						<p>
 							Account recovery links expire after <?php echo ((int)config_item('recovery_code_expiration') / ( 60 * 60 )); ?> hours.
 							<br>
-							You will need to use the <a href="<?php echo base_url('Authenticate/recover'); ?>">Account Recovery</a> form to send yourself a new link.
+							You will need to use the <a href="<?php echo base_url('authenticate/recover'); ?>">Account Recovery</a> form to send yourself a new link.
 						</p>
 					</div>
 				</div>

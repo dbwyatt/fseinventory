@@ -75,7 +75,7 @@
 					</div>
 
 					<div class="row justify-content-center padding_top_medium">
-						<a class="lightgrey" href="<?php echo site_url('Authenticate/recover'); ?>">Can't access your account?</a>
+						<a class="lightgrey" href="<?php echo site_url('authenticate/recover'); ?>">Can't access your account?</a>
 					</div>
 
 				</div>

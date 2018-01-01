@@ -335,7 +335,7 @@ class Authenticate extends MY_Controller
 						$link_protocol = USE_SSL ? 'https' : NULL;
 
 						// Set URI of link
-						$link_uri = 'Authenticate/recovery_verification/' . $user_data->user_id . '/' . $recovery_code;
+						$link_uri = 'authenticate/recovery_verification/' . $user_data->user_id . '/' . $recovery_code;
 
 						$view_data['special_link'] = anchor( 
 							site_url( $link_uri, $link_protocol ), 
