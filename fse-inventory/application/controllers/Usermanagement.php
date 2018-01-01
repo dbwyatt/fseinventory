@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserManagement extends MY_Controller {
+class Usermanagement extends MY_Controller {
 
 	public function index()
 	{
