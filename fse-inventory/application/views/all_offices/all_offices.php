@@ -28,7 +28,7 @@
 			</tfoot>
 			<tbody>
 				<?php
-					foreach($all_office as $column => $office)
+					foreach($all_offices as $column => $office)
 					{
 						echo "<tr>";
 						foreach($office as $o)

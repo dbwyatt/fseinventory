@@ -11,10 +11,10 @@ class AllOffices extends MY_Controller {
 			$all_offices = $this->offices_model->select_all_from_office();
 			$office_columns = $this->offices_model->get_columns();
 
-			$data['all_offices'] = $all_office;
+			$data['all_offices'] = $all_offices;
 			$data['office_columns'] = $office_columns;
 
-			$this->template->setAll('FSE Inventory: Office', array('home'));
+			$this->template->setAll('FSE Inventory: Offices', array('home'));
 			$this->template->load('all_offices/all_offices', $data);
 		}
 	}
