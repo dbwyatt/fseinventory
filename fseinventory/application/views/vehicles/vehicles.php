@@ -1,5 +1,9 @@
 <?php echo $_SERVER['QUERY_STRING']; ?>
 
+<div class="align_main padding_top_large padding_bottom_large">
+	<h2>Vehicles</h2>
+</div>
+
 <div class="main">
 	<div class="content">
 		<div class="loading">Loading...</div>

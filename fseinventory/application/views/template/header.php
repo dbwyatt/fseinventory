@@ -51,6 +51,8 @@
 				}
 			?>
 
+			<div class="active_hr"></div>
+
 		</header>
 
 		<div id="body-content">
