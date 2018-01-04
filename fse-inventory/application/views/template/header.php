@@ -20,11 +20,11 @@
 			?>
 					<nav id="nav_main">
 						<ul>
-							<li><a href="<?php echo base_url('home'); ?>">Home</a></li>
+							<li><a href="<?php echo base_url('home'); ?>" class="<?php echo strtolower($this->uri->segment(1)) == 'home' ? 'active' : '' ?>">Home</a></li>
 							<li><a class="divider">|</a></li> <!-- le pipe -->
-							<li><a href="<?php echo base_url('tools'); ?>">Tools</a></li>
-							<li><a href="<?php echo base_url('offices'); ?>">Office Equipment</a></li>
-							<li><a href="<?php echo base_url('vehicles'); ?>">Vehicles</a></li>
+							<li><a href="<?php echo base_url('tools'); ?>" class="<?php echo strtolower($this->uri->segment(1)) == 'tools' ? 'active' : '' ?>">Tools</a></li>
+							<li><a href="<?php echo base_url('offices'); ?>" class="<?php echo strtolower($this->uri->segment(1)) == 'offices' ? 'active' : '' ?>">Office Equipment</a></li>
+							<li><a href="<?php echo base_url('vehicles'); ?>" class="<?php echo strtolower($this->uri->segment(1)) == 'vehicles' ? 'active' : '' ?>">Vehicles</a></li>
 						</ul>
 					</nav>
 			<?php
