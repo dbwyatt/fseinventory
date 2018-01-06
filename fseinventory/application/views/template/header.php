@@ -50,6 +50,21 @@
 							<a class="dropdown-item" href="#">Something else here</a>
 							</div>
 						</li> -->
+
+						<?php if(isset($auth_username)) { ?>
+							<div class="user_tools">	
+								<ul>
+									<li>
+										<!-- ACCOUNT / USER -->
+										<a href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
+									</li>
+									<li>
+										<!-- LOGOUT -->
+										<a href="<?php echo base_url('authenticate/logout'); ?>">Logout</a>
+									</li>
+								</ul>
+							</div>
+						<?php }	?>
 					</ul>
 					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
