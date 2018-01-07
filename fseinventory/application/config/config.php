@@ -26,6 +26,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if (ENVIRONMENT === 'development') {
 	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/";
 }
+else if (ENVIRONMENT === 'testing') {
+	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/fseinventory/dev/";
+}
 else {
 	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/fseinventory/";
 }

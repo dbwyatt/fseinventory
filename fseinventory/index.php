@@ -54,7 +54,16 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 
-	define('ENVIRONMENT', strpos($_SERVER['HTTP_HOST'], 'localhost') !== false ? 'development' : 'production');
+if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
+	define('ENVIRONMENT', 'development');
+}
+else if (strpos($_SERVER['HTTP_HOST'], '/fseinventory/dev/') !== false) {
+	define('ENVIRONMENT', 'testing');
+}
+else {
+	define('ENVIRONMENT', 'production');
+}
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
