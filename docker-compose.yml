@@ -9,7 +9,7 @@ services:
     volumes:
       - '.:/app'
     environment:
-      - CODEIGNITER_PROJECT_NAME=fseinventory_test
+      - CODEIGNITER_PROJECT_NAME=fseinventory
     depends_on:
       - mariadb
   mariadb:
@@ -19,7 +19,7 @@ services:
     ports:
       - 4306:3306
     volumes:
-      - ../fseinventory_test-db:/bitnami
+      - ../fseinventory-testing-db:/bitnami
   phpmyadmin:
     image: bitnami/phpmyadmin:latest
     ports:
