@@ -27,7 +27,7 @@ if (ENVIRONMENT === 'development') {
 	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/";
 }
 else if (ENVIRONMENT === 'testing') {
-	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/fseinventory/dev/";
+	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/fseinventory/testing/";
 }
 else {
 	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/fseinventory/";
