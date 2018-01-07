@@ -57,7 +57,7 @@
 if (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false) {
 	define('ENVIRONMENT', 'development');
 }
-else if (strpos($_SERVER['HTTP_HOST'], '/fseinventory/dev/') !== false) {
+else if (getenv('CI_ENV') === 'testing') {
 	define('ENVIRONMENT', 'testing');
 }
 else {
