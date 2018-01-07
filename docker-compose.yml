@@ -10,6 +10,7 @@ services:
       - '.:/app'
     environment:
       - CODEIGNITER_PROJECT_NAME=fseinventory
+      - CI_ENV=testing
     depends_on:
       - mariadb
   mariadb:
