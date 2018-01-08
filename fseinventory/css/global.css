@@ -137,3 +137,7 @@ ul {
 #login_rememberme_label {
 	/*font-size: 12px;*/
 }
+
+div.dt-buttons {
+	margin-bottom: 0.5em;
+}

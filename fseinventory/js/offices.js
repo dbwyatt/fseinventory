@@ -1,21 +1,24 @@
 $(function() {
 
-    var table = $('#office-table').DataTable({
+    let table = $('#office-table').DataTable({
+        pagingType: 'numbers',
         fixedHeader: true,
         autoFill: true,
         colReorder: true,
         rowReorder: true,
-        response: true,
+        responsive: true,
         select: true,
+        dom: 'Blfrtip',
         buttons: [
-            'copy', 'excel', 'pdf'
+            'copy',
+            'csv',
+            'excel',
+            {
+                extend: 'pdf',
+                orientation: 'landscape'
+            },
+            'print'
         ]
     });
-
-    table.buttons().container()
-    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
     
-	$('.loading').hide();
-	$('#office-table').show();
-
 });

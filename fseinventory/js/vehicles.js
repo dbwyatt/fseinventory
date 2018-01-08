@@ -1,21 +1,24 @@
 $(function() {
 
-    var table = $('#vehicles-table').DataTable({
+    let table = $('#vehicles-table').DataTable({
+        pagingType: 'numbers',
         fixedHeader: true,
         autoFill: true,
         colReorder: true,
         rowReorder: true,
-        response: true,
+        responsive: true,
         select: true,
+        dom: 'Blfrtip',
         buttons: [
-            'copy', 'excel', 'pdf'
+            'copy',
+            'csv',
+            'excel',
+            {
+                extend: 'pdf',
+                orientation: 'landscape'
+            },
+            'print'
         ]
     });
-
-    table.buttons().container()
-    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
-    
-	$('.loading').hide();
-	$('#vehicles-table').show();
 
 });
