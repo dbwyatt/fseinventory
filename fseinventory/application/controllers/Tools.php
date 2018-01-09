@@ -18,4 +18,8 @@ class Tools extends MY_Controller {
 			$this->template->load('tools/tools', $data);
 		}
 	}
+
+	public function add_new_entry() {
+		
+	}
 }
