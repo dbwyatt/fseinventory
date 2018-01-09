@@ -88,8 +88,10 @@
 
 .dropdown-toggle::after {
 	margin-right: 5px;
+	vertical-align: middle;
 	transition: transform .5s;
 }
 .dropdown.show .dropdown-toggle::after {
 	transform: rotate(-180deg);
+	transform-origin: center 2px;
 }
