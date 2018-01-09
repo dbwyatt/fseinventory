@@ -49,7 +49,6 @@
 .user_tools
 {
 	order: 3;
-	margin: 0 auto;
 	padding: 15px 30px;
 	background-color: lightgrey;
 	box-shadow: 1px 1px 8px -2px grey;
@@ -78,6 +77,7 @@
 }
 .navbar .form-inline {
 	flex-flow: row;
+	margin-right: 15px;
 }
 .navbar-nav li {
 	font-weight: bold;
@@ -85,7 +85,9 @@
 .nav-link {
 	white-space: nowrap;
 }
-
+.navbar-nav .dropdown-menu {
+	position: absolute;
+}
 .dropdown-toggle::after {
 	margin-right: 5px;
 	vertical-align: middle;

@@ -42,7 +42,7 @@
 
 					<!-- USER CONTROLS -->
 					<?php if(isset($auth_username)) { ?>	
-						<ul class="navbar-nav mr-auto user_tools">
+						<ul class="navbar-nav user_tools">
 	                        
 	                        <li class="dropdown">
 								<!-- ACCOUNT / USER -->
