@@ -49,25 +49,31 @@
 .user_tools
 {
 	order: 3;
-	padding: 15px 30px;
-	background-color: lightgrey;
-	box-shadow: 1px 1px 8px -2px grey;
+	padding: 10px;
+	/*background-color: lightgrey;*/
+	/*box-shadow: 1px 1px 8px -2px grey;*/
 	list-style: none;
 	display: flex;
 	flex-direction: row;
 }
-.user_tools > li > a
+.user_tools > li
 {
-	padding: 25px 15px 22px 15px;
+	/*padding: 25px 15px 22px 15px;*/
+	padding: 10px;
 	transition: .15s;
-	clip-path: polygon(0 100%, 0 0, 23% 0, 26% 1%, 28% 4%, 30% 8%, 100% 8%, 100% 100%);
+	/*clip-path: polygon(0 100%, 0 0, 23% 0, 26% 1%, 28% 4%, 30% 8%, 100% 8%, 100% 100%);*/
 	text-decoration: none;
 	color: #595856;
 }
-.user_tools > li:hover > a, li.dropdown.show > a
+.user_tools > li:hover, li.dropdown.show
 {
-	background-color: #FFD400;
-	color: black;
+	/*background-color: #FFD400;*/
+	box-shadow: inset 0 0 3px grey;
+    border-radius: 3px;
+}
+.user_tools > li > a {
+	text-decoration: none;
+	color: rgba(0,0,0,.5);
 }
 
 /* NEW BOOTSTRAP NAV */
