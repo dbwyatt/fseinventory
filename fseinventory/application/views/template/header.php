@@ -4,7 +4,7 @@
 	<div id="body-wrapper">
 		<header id="header_main">
 
-			<nav class="navbar navbar-toggleable-lg fixed-top navbar-expand-lg navbar-light">
+			<nav class="navbar fixed-top navbar-expand-xl navbar-light">
 				<a class="navbar-brand" href="<?php echo base_url('home'); ?>">
 					<img src="http://files.fseinfo.net/fse_logo.jpg" height="50">
 				</a>
@@ -43,11 +43,22 @@
 					<!-- USER CONTROLS -->
 					<?php if(isset($auth_username)) { ?>	
 						<ul class="navbar-nav mr-auto user_tools">
-							<li>
+	                        
+	                        <li class="dropdown">
 								<!-- ACCOUNT / USER -->
-								<a href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
-							</li>
-							<li>
+	                            <a class="dropdown-toggle" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                                <?php echo $auth_username; ?>
+	                            </a>
+	                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">Account</a>
+	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">Settings</a>
+	                            <div class="dropdown-divider"></div>
+	                            <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">You're awesome!</a>
+	                            </div>
+	                        </li>
+
+
+							<li class="">
 								<!-- LOGOUT -->
 								<a href="<?php echo base_url('authenticate/logout'); ?>">Logout</a>
 							</li>

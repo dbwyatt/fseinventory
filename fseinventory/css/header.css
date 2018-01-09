@@ -57,7 +57,7 @@
 	display: flex;
 	flex-direction: row;
 }
-.user_tools li a
+.user_tools > li > a
 {
 	padding: 25px 15px 22px 15px;
 	transition: .15s;
@@ -65,7 +65,7 @@
 	text-decoration: none;
 	color: #595856;
 }
-.user_tools li a:hover 
+.user_tools > li:hover > a, li.dropdown.show > a
 {
 	background-color: #FFD400;
 	color: black;
@@ -84,4 +84,12 @@
 }
 .nav-link {
 	white-space: nowrap;
+}
+
+.dropdown-toggle::after {
+	margin-right: 5px;
+	transition: transform .5s;
+}
+.dropdown.show .dropdown-toggle::after {
+	transform: rotate(-180deg);
 }
