@@ -4,7 +4,7 @@
 	<div id="body-wrapper">
 		<header id="header_main">
 
-			<nav class="navbar fixed-top navbar-expand-md navbar-light">
+			<nav class="navbar navbar-toggleable-lg fixed-top navbar-expand-lg navbar-light">
 				<a class="navbar-brand" href="<?php echo base_url('home'); ?>">
 					<img src="http://files.fseinfo.net/fse_logo.jpg" height="50">
 				</a>
@@ -41,19 +41,17 @@
 					</ul>
 
 					<!-- USER CONTROLS -->
-					<?php if(isset($auth_username)) { ?>
-						<div class="user_tools">	
-							<ul>
-								<li>
-									<!-- ACCOUNT / USER -->
-									<a href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
-								</li>
-								<li>
-									<!-- LOGOUT -->
-									<a href="<?php echo base_url('authenticate/logout'); ?>">Logout</a>
-								</li>
-							</ul>
-						</div>
+					<?php if(isset($auth_username)) { ?>	
+						<ul class="navbar-nav mr-auto user_tools">
+							<li>
+								<!-- ACCOUNT / USER -->
+								<a href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>"><?php echo $auth_username; ?></a>
+							</li>
+							<li>
+								<!-- LOGOUT -->
+								<a href="<?php echo base_url('authenticate/logout'); ?>">Logout</a>
+							</li>
+						</ul>
 					<?php }	?>
 					
 					<!-- NAV SEARCH -->

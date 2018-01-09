@@ -48,20 +48,16 @@
 }
 .user_tools
 {
-	display: flex;
 	order: 3;
-	margin: auto 0 auto 50px;
+	margin: 0 auto;
 	padding: 15px 30px;
 	background-color: lightgrey;
 	box-shadow: 1px 1px 8px -2px grey;
-}
-.user_tools ul
-{
 	list-style: none;
 	display: flex;
-	padding-left: 0;
+	flex-direction: row;
 }
-.user_tools ul li a
+.user_tools li a
 {
 	padding: 25px 15px 22px 15px;
 	transition: .15s;
@@ -69,7 +65,7 @@
 	text-decoration: none;
 	color: #595856;
 }
-.user_tools ul li a:hover 
+.user_tools li a:hover 
 {
 	background-color: #FFD400;
 	color: black;
@@ -80,6 +76,12 @@
 	background-color: white;
 	border-bottom: 1px solid #009933;
 }
+.navbar .form-inline {
+	flex-flow: row;
+}
 .navbar-nav li {
 	font-weight: bold;
+}
+.nav-link {
+	white-space: nowrap;
 }
