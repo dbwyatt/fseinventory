@@ -10,7 +10,7 @@
 {
 	padding: 150px;
 	background-color: #F4F4F4;
-	display: flex;
+	/*display: flex;*/
 	justify-content: center;
 	box-shadow: 1px 1px 8px -2px grey;
 }
