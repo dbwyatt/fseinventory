@@ -11,12 +11,26 @@
 	?>
 			<div class="row justify-content-center padding_medium">
 				<div class="col-sm-6">
-					<p>
-						Login Error #<?php echo $this->authentication->login_errors_count; ?>/<?php echo config_item('max_allowed_attempts'); ?>: Invalid Username, Email Address, or Password.
-					</p>
-					<p>
+					<div id="login_error_message" class="alert alert-warning alert-dismissable" role="alert">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						Login Error - Invalid Username, Email Address, or Password.
+						<br>
+						<br>
+						<?php 
+							$error_string = "";
+							if(config_item('max_allowed_attempts') > 0)
+								$error_string = config_item('max_allowed_attempts') - $this->authentication->login_errors_count;
+							if($error_string > 1) 
+								$error_string .= " attempts remaining";
+							else
+								$error_string .= " attempt remaining";
+
+							echo $error_string;
+						?>
+						<br>
+						<br>
 						Username, email address and password are all case sensitive.
-					</p>
+					</div>
 				</div>
 			</div>
 	<?php
@@ -91,14 +105,14 @@
 	?>
 			
 		<div class="row justify-content-center">
-			<div class="col-sm-6">
+			<div class="col-sm-6 form_styled_container">
 				<p>Excessive Login Attempts</p>
 				<p>You have exceeded the maximum number of failed login attempts that this website will allow.</p>
 				<p>
 					Your access to login and account recovery has been blocked for <?php echo ((int)config_item('seconds_on_hold') / 60); ?> minutes.
 				</p>
 				<p>
-					Please use the <a href="/examples/recover">Account Recovery</a> after <?php echo ((int)config_item('seconds_on_hold') / 60); ?> minutes has passed or contact an administrator if you require assistance gaining access to your account.
+					Please use the <a href="/authenticate/recover">Account Recovery</a> after <?php echo ((int)config_item('seconds_on_hold') / 60); ?> minutes has passed or contact an administrator if you require assistance gaining access to your account.
 				</p>
 			</div>
 		</div>
