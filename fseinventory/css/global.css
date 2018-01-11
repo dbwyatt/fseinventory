@@ -1,53 +1,13 @@
-@font-face
-{
-	font-family: "SanFrancisco";
-	src: url(../application/fonts/SanFrancisco-Regular.ttf);
-	font-style: normal;
-}
-@font-face
-{
-	font-family: "SanFrancisco-Bold";
-	src: url(../application/fonts/SanFrancisco-Bold.ttf);
-	font-weight: bold;
-}
-@font-face
-{
-	font-family: "SanFrancisco-RegularItalic";
-	src: url(../application/fonts/SanFrancisco-RegularItalic.ttf);
-	font-style: italic;
-}
-/*@font-face
-{
-	font-family: "SanFrancisco";
-	src: url(../application/fonts/SanFrancisco-Regular.ttf);
-}
-@font-face
-{
-	font-family: "SanFrancisco";
-	src: url(../application/fonts/SanFrancisco-Regular.ttf);
-}
-@font-face
-{
-	font-family: "SanFrancisco";
-	src: url(../application/fonts/SanFrancisco-Regular.ttf);
-}
-@font-face
-{
-	font-family: "SanFrancisco";
-	src: url(../application/fonts/SanFrancisco-Regular.ttf);
-}
-@font-face
-{
-	font-family: "SanFrancisco";
-	src: url(../application/fonts/SanFrancisco-Regular.ttf);
-}*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 
 html,
 body {
 	margin:0;
 	padding:0;
 	height:100%;
-	font-family: "SanFrancisco";
+	font-family: "Open Sans", sans-serif;
 	background-color: #F4F4F4;
 }
 
