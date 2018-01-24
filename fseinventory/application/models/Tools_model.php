@@ -11,6 +11,12 @@
 		}
 		return $data;
 	}
+	public function get_raw_columns($table_name = NULL) {
+		
+		$data = $this->db->list_fields($table_name);
+
+		return $data;
+	}
 
 	public function select_all_from_tools() {        
         

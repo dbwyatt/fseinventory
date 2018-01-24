@@ -27,7 +27,7 @@ class Tools extends MY_Controller {
 		$data['modal_id'] = "tool_modal";
 		$data['modal_title'] = "Add a New Tool Record";
 
-		$data['columns'] = $this->tools_model->get_columns('tools');
+		$data['columns'] = $this->tools_model->get_raw_columns('tools');
 		// columns that are either auto generated, or we just don't want to show
 		$data['hidden_values'] = array("id", "date created");
 
