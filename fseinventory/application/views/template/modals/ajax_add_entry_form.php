@@ -15,7 +15,65 @@
             
             <div class="modal-body">
                 
-                
+                <div class="container">
+                    
+                        <?php
+                            
+                            $col_count = 0;
+                            $div_added = false;
+                            $array_iteration = 0;
+                            $array_length = count($columns);
+
+                            foreach ($columns as $column) {
+                                $array_iteration++;
+                                // only show options we will allow chainging manually
+                                if (!in_array(strtolower($column), $hidden_values)) {
+                                    // form formatting
+                                    if ($col_count == 0 && $div_added == false) {
+                        ?>
+                                        <div class="row">
+                        <?php
+                                    }
+                                    if ($col_count < 2) {
+                        ?>
+                                            <div class="col-sm-4">
+                                                <label for="<?php echo $column; ?>" class="col-form-label"><?php echo $column; ?></label>
+                                                <br>
+                                                <input type="text" class="form-control" name="" placeholder="test">
+                                            </div>
+
+                        <?php
+                                        if ($col_count == 1) {
+                        ?>
+                                            </div>
+                        <?php
+                                        }
+                                        $col_count++;
+                                    }
+                                    else {
+                                        $col_count = 0;
+                                        if ($array_iteration < $array_length) {
+                        ?>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label for="<?php echo $column; ?>" class="col-form-label"><?php echo $column; ?></label>
+                                                    <br>
+                                                    <input type="text" class="form-control" name="" placeholder="test">
+                                                </div>
+                        <?php
+                                            $div_added = true;
+                                        }
+                                        elseif ($array_iteration == $array_length) {
+                        ?>
+                                            </div>
+                        <?php
+                                        }
+                                    }
+                                }
+                            }
+                        ?>
+                    
+                </div>
 
             </div>
             
