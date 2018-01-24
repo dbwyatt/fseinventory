@@ -48,7 +48,7 @@
 	                        
 	                        <li class="dropdown">
 								<!-- ACCOUNT / USER -->
-	                            <a class="dropdown-toggle" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                                <?php echo $auth_username; ?>
 	                            </a>
 	                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -153,9 +153,11 @@ class Authenticate extends MY_Controller
 
 	// receive user_data from $POST on form submit via:
 	// views/user_management/create_new_user.php
-	public function create_user($user_data)
+	public function create_user()
 	{
 		$this->is_logged_in();
+
+
 
 		// Load resources
 		$this->load->helper('auth');

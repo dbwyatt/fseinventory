@@ -107,3 +107,18 @@ ul {
 div.dt-buttons {
 	margin-bottom: 0.5em;
 }
+
+
+
+
+
+/* --- MODALS --- */
+@media screen and (min-width: 768px) {
+	
+	.wide_modalform .modal-dialog  {
+		max-width: none;
+		width: 70%;
+		margin: 75px auto;
+	}
+
+}

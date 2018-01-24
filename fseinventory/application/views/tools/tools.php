@@ -7,7 +7,7 @@
 <div class="main">
 	<div class="content">
 		<div class="float_right">
-			<button type="button" class="btn btn-primary">+ Add Entry</button>
+			<button id="add_tool_entry" type="button" class="btn btn-primary">+ Add Entry</button>
 			<button type="button" class="btn btn-info">Edit Entry</button>
 		</div>
 		

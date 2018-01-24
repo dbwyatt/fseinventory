@@ -27,5 +27,11 @@
 
 		?>
 
+		<script>
+			
+			var base_url = "<?php echo base_url(); ?>";
+		
+		</script>
+
 		<title><?php echo $_title ?></title>
 	</head>
