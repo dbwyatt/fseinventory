@@ -1,4 +1,3 @@
-
 <div class="modal fade wide_modalform" id="<?php echo $modal_id; ?>" tabindex="-1" role="dialog" aria-labelledby="modalform" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -12,7 +11,7 @@
                 </button>
           
             </div>
-                <form action="tools/add_new_entry_to_db" method="post">
+                <form action="" method="post">
                     <div class="modal-body">
                         <div class="container">
                             

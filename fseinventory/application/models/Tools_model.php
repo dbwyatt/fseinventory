@@ -18,6 +18,13 @@
 		return $data;
 	}
 
+	public function get_options($table_name = NULL) {
+
+		$data = NULL; //$this->db->select('');
+
+		return $data;
+	}
+
 	public function select_all_from_tools() {        
         
         $query = $this->db->select('*')
@@ -47,5 +54,15 @@
 								->get()->result_array();
 
 		return $table_data;					
+	}
+
+	public function add_db_entry($post_data = NULL, $table_name = NULL) {
+
+		$success = FALSE;
+
+		if($this->db->insert($table_name, $post_data))
+			$success = TRUE;
+
+		return $success;
 	}
 }

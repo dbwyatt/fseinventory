@@ -27,26 +27,64 @@ class Tools extends MY_Controller {
 		$data['modal_id'] = "tool_modal";
 		$data['modal_title'] = "Add a New Tool Record";
 
+		$data['columns_strrep'] = $this->tools_model->get_columns('tools');
 		$data['columns'] = $this->tools_model->get_raw_columns('tools');
-		// columns that are either auto generated, or we just don't want to show
+
+		// select data options
+		$options = $this->tools_model->get_options('tools');
+
+		// $data['locations'] = $options[1];
+		// $data['departments'] = $options[2];
+		// $data['tool_descriptions'] = $options[3];
+		
+		// columns that are either auto generated, or we just don't want 
+		// to show dynamically
 		$data['hidden_values'] = array("id", "date created");
 
 		$this->load->view('template/modals/ajax_add_entry_form', $data);
 	}
 
-	public function edit_entry_ajax() {
-
-		// Modal Settings
-		$data['modal_id'] = "tool_modal";
-		$data['modal_title'] = "Edit Tool Record";
+	public function add_new_entry_to_db() {
 
 		$this->load->model('tools_model');
-		$data['tools_columns'] = $this->tools_model->get_columns('tools');
+
+		$success = $this->tools_model->add_db_entry($_POST, "tools");
+
+		if ($success) {
+			// message success
+		}
+		else {
+			// message failure
+		}
+
+	}
+
+	public function edit_entry_ajax($tool_model = NULL) {
+
+		$this->load->model('tools_model');
+		
+		// Modal Settings
+		$data['modal_id'] = "tool_modal";
+		$data['modal_title'] = "Edit Tool Record - <?php echo $tool_model; ?>";
+
+		$data['columns_strrep'] = $this->tools_model->get_columns('tools');
+		$data['columns'] = $this->tools_model->get_raw_columns('tools');
+
+		// select data options
+		$options = $this->tools_model->get_options('tools');
+
+		// $data['locations'] = $options[1];
+		// $data['departments'] = $options[2];
+		// $data['tool_descriptions'] = $options[3];
+		
+		// columns that are either auto generated, or we just don't want to show
+		// dynamic
+		$data['hidden_values'] = array("id", "date created");
 		
 		// insert selected row data
 		//$data['tool_data'] = $this->tools_model->select_tools();
 
-		$this->load->view('template/modals/ajax_add_entry_form', $data);
+		$this->load->view('template/modals/ajax_edit_entry_form', $data);
 	}
 	
 }

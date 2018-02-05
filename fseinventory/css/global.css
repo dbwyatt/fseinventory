@@ -112,6 +112,8 @@ div.dt-buttons {
 
 
 
+
+
 /* --- MODALS --- */
 @media screen and (min-width: 768px) {
 	
@@ -121,4 +123,13 @@ div.dt-buttons {
 		margin: 75px auto;
 	}
 
+}
+.modal-header, .modal-footer {
+	border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
