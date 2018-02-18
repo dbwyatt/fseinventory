@@ -19,10 +19,10 @@
 
 		<?php 
 			foreach($_js as $js){
-				echo "<script type='text/javascript' src='" . base_url() . "js/" . $js . ".js'></script>";
+				echo "<script type='text/javascript' src='" . base_url() . "dist/js/" . $js . ".js'></script>";
 			}
 			foreach($_css as $css){
-				echo "<link rel='stylesheet' type='text/css' href='" . base_url() . "css/" . $css . ".css'>";
+				echo "<link rel='stylesheet' type='text/css' href='" . base_url() . "dist/css/" . $css . ".css'/>";
 			}
 
 		?>
