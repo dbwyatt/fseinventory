@@ -1,0 +1,43 @@
+{
+	"name": "fseinventory",
+	"version": "0.0.1",
+	"scripts": {
+		"babel": "babel fseinventory/js -d dist/js",
+		"start": "gulp",
+		"sync": "gulp browser-sync",
+		"webpack": "webpack",
+		"webpack-dev": "webpack --config dev.webpack.config.js",
+		"watch": "gulp watch"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.0.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-env": "^1.6.1",
+		"babel-preset-es2015": "^6.24.1",
+		"babel-register": "^6.26.0",
+		"babelify": "^8.0.0",
+		"browser-sync": "^2.23.6",
+		"browserify": "^16.1.0",
+		"clean-webpack-plugin": "^0.1.18",
+		"del": "^3.0.0",
+		"glob": "^7.1.2",
+		"gulp": "^4.0.0",
+		"gulp-babel": "^7.0.1",
+		"gulp-clean-css": "^3.9.2",
+		"gulp-concat": "^2.6.1",
+		"gulp-less": "^3.4.0",
+		"gulp-livereload": "^3.8.1",
+		"gulp-rename": "^1.2.2",
+		"gulp-sourcemaps": "^2.6.4",
+		"gulp-uglify": "^3.0.0",
+		"html-webpack-plugin": "^2.30.1",
+		"vinyl-buffer": "^1.0.1",
+		"vinyl-source-stream": "^2.0.0",
+		"watchify": "^3.10.0",
+		"webpack": "^3.10.0",
+		"webpack-dev-server": "^2.11.1"
+	},
+	"dependencies": {
+		"lodash": "^4.17.5"
+	}
+}
