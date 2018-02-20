@@ -6,6 +6,7 @@ const uglify        = require('gulp-uglify');
 const rename        = require('gulp-rename');
 const cleanCSS      = require('gulp-clean-css');
 const sourcemaps    = require('gulp-sourcemaps');
+const gutil         = require('gulp-util');
 const del           = require('del');
 const babelify      = require('babelify');
 const browserify    = require('browserify');
@@ -25,6 +26,9 @@ const paths = {
   scripts: {
     src: 'fseinventory/js/**.js',
     dest: 'fseinventory/dist/js/'
+  },
+  views: {
+    src: 'fseinventory/application/views/**/*.(php|html)'
   }
 };
 
@@ -45,7 +49,7 @@ export function styles() {
 }
 
 export function scripts(done) {
-    return glob(paths.scripts.src, function(err, files) {
+    glob(paths.scripts.src, function(err, files) {
         if (err) done(err);
         const tasks = files.map(function(entry) {
             const [file, ...rest] = entry.split('/').reverse();
@@ -58,6 +62,10 @@ export function scripts(done) {
                     transform: ['babelify']
                 })
                 .bundle()
+                .on("error", err => {
+                    gutil.log("Browserify Error", gutil.colors.red(err.message));
+                    done(err);
+                })
                 .pipe(source(file))
                 // .pipe(rename({
                 //     extname: '.js'
@@ -68,9 +76,7 @@ export function scripts(done) {
                 .pipe(sourcemaps.write('./maps'))
                 .pipe(gulp.dest(paths.scripts.dest));
         });
-        return es.merge(tasks).on('end', function() {
-            return;
-        });
+        es.merge(tasks).on('end', done);
     });
 
     // return gulp.src(paths.scripts.src, { sourcemaps: true })
@@ -80,25 +86,26 @@ export function scripts(done) {
     // .pipe(gulp.dest(paths.scripts.dest));
 }
 
-gulp.task('browser-sync', gulp.series(styles, scripts, function(done) {
-  browserSync.init({
-    proxy: "localhost:8000"
-  });
-  done();
-}));
+function serve(done) {
+    browserSync.init({
+        proxy: "localhost:8000"
+    });
+    done();
+}
 
 function watch() {
   gulp.watch(paths.scripts.src, gulp.series(scripts, reload));
-  gulp.watch(paths.styles.src, styles).on('change', browserSync.reload);
+  gulp.watch(paths.styles.src, gulp.series(styles));
+  gulp.watch(paths.views.src, reload);
 }
 
 function reload(done) {
-    exec('docker restart fseinventory_myapp_1', function(err, stdout, stderr) {});
+    // exec('docker restart fseinventory_myapp_1', function(err, stdout, stderr) {});
     browserSync.reload();
     done();
 }
 
-gulp.task('watch', gulp.series('browser-sync', watch));
+gulp.task('watch', gulp.series(clean, styles, scripts, serve, watch));
 
 const build = gulp.series(clean, gulp.parallel(styles, scripts));
 gulp.task('build', build);
