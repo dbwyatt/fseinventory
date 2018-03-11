@@ -7,8 +7,8 @@
 <div class="main">
 	<div class="content">
 		<div class="float_right">
-			<button id="add_tool_entry" type="button" class="btn btn-primary">+ Add Entry</button>
-			<button id="edit_tool_entry" type="button" class="btn btn-info">Edit Entry</button>
+			<button id="add_tool" type="button" class="btn btn-primary">+ Add Tool</button>
+			<button id="edit_tools" type="button" class="btn btn-info">Edit Tool</button>
 		</div>
 		
 		<table id="tools-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -41,6 +41,9 @@
 						echo "<tr>";
 						foreach($tool as $t)
 							echo "<td>$t </td>";
+
+						// echo '<td><button type="button" class="btn btn-info edit_tools_btn">Edit Entry</button></td>';
+						
 						echo "</tr>";
 					}
 				?>

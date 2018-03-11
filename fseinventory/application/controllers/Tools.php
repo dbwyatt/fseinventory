@@ -30,16 +30,11 @@ class Tools extends MY_Controller {
 		$data['columns_strrep'] = $this->tools_model->get_columns('tools');
 		$data['columns'] = $this->tools_model->get_raw_columns('tools');
 
-		// select data options
-		$options = $this->tools_model->get_options('tools');
-
-		// $data['locations'] = $options[1];
-		// $data['departments'] = $options[2];
+		// select dropdown and other options we'll need to display in the form
+		$data['locations'] = $this->tools_model->get_options('location');
+		$data['departments'] = $this->tools_model->get_options('department');
 		// $data['tool_descriptions'] = $options[3];
-		
-		// columns that are either auto generated, or we just don't want 
-		// to show dynamically
-		$data['hidden_values'] = array("id", "date created");
+		$data['condition_assessments'] = $this->tools_model->get_options('condition_assessment');
 
 		$this->load->view('template/modals/ajax_add_entry_form', $data);
 	}
@@ -52,6 +47,7 @@ class Tools extends MY_Controller {
 
 		if ($success) {
 			// message success
+			redirect('tools');
 		}
 		else {
 			// message failure
@@ -70,19 +66,8 @@ class Tools extends MY_Controller {
 		$data['columns_strrep'] = $this->tools_model->get_columns('tools');
 		$data['columns'] = $this->tools_model->get_raw_columns('tools');
 
-		// select data options
-		$options = $this->tools_model->get_options('tools');
-
-		// $data['locations'] = $options[1];
-		// $data['departments'] = $options[2];
-		// $data['tool_descriptions'] = $options[3];
-		
-		// columns that are either auto generated, or we just don't want to show
-		// dynamic
-		$data['hidden_values'] = array("id", "date created");
-		
-		// insert selected row data
-		//$data['tool_data'] = $this->tools_model->select_tools();
+		// get current row data to edit
+		$data['db_row'] = $this->tools_model->test();
 
 		$this->load->view('template/modals/ajax_edit_entry_form', $data);
 	}

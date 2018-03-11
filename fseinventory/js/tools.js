@@ -22,7 +22,7 @@ $(function() {
     });
     
     // ajax open add new tool entry form
-    $('#add_tool_entry').click(function(){
+    $('#add_tool').click(function(){
         $.ajax({
             url: base_url + 'tools/add_new_entry_ajax',
             method: 'GET',
@@ -36,8 +36,18 @@ $(function() {
         });
     });
 
+    // show edit buttons
+    $('#edit_tools').click(function(){
+
+        var txt = $(".edit_tools_btn").is(':visible') ? 'Done editing' : 'Edit Tools';
+        $('#edit_tools').text(txt);
+        $('#edit_tools_btn').toggle();
+        // $('.edit_tools_btn').show();
+
+    });
+
     // ajax open edit tool entry form
-    $('#edit_tool_entry').click(function(){
+    $('#edit_tools').click(function(){
         $.ajax({
             url: base_url + 'tools/edit_entry_ajax',
             method: 'GET',

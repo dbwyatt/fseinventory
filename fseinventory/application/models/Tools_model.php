@@ -20,7 +20,9 @@
 
 	public function get_options($table_name = NULL) {
 
-		$data = NULL; //$this->db->select('');
+		$data = $this->db->select('*')
+							->from($table_name)
+							->get()->result_array();
 
 		return $data;
 	}
@@ -29,7 +31,7 @@
         
         $query = $this->db->select('*')
                           ->from('tools')
-                          ->limit('30')
+                          //->limit('30')
                           ->get();
 
         $data = $query->result_array();

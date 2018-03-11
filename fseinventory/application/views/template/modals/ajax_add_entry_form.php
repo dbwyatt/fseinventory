@@ -21,8 +21,9 @@
                                     <label for="<?php echo $columns[1]; ?>" class="col-form-label"><?php echo $columns_strrep[1]; ?></label>
                                     <br>
                                     <select class="form-control" name="<?php echo $columns[1]; ?>">
-                                        <?php foreach ($locations as $location) {
-                                            echo '<option>$location</option';
+                                        <option value="0">-- Select a Location --</option>
+                                        <?php foreach ($locations as $l) {
+                                            echo '<option value='.$l["id"].'>'. $l["location"].'</option>';
                                         } ?>
                                     </select>
                                 </div>
@@ -32,8 +33,9 @@
                                     <label for="<?php echo $columns[2]; ?>" class="col-form-label"><?php echo $columns_strrep[2]; ?></label>
                                     <br>
                                     <select class="form-control" name="<?php echo $columns[2]; ?>">
-                                        <?php foreach ($departments as $department) {
-                                            echo '<option>$department</option';
+                                        <option value="0">-- Select a Department --</option>
+                                        <?php foreach ($departments as $d) {
+                                            echo '<option value='.$d["id"].'>'.$d['department'].'</option>';
                                         } ?>
                                     </select>
                                 </div>
@@ -43,7 +45,7 @@
                                 <div class="col-lg-6"> <!-- TOOL DESCRIPTION -->
                                     <label for="<?php echo $columns[3]; ?>" class="col-form-label"><?php echo $columns_strrep[3]; ?></label>
                                     <br>
-                                    <input type="text" class="form-control" name="<?php echo $columns[3]; ?>" placeholder="tool name...">
+                                    <input type="text" class="form-control" name="<?php echo $columns[3]; ?>" placeholder="tool name..." required>
                                 </div>
 
                                 <div class="col-lg-4"> <!-- TOOL MODEL -->
@@ -62,7 +64,7 @@
                                 <div class="col-lg-3"> <!-- ASSET TAG -->
                                     <label for="<?php echo $columns[6]; ?>" class="col-form-label"><?php echo $columns_strrep[6]; ?></label>
                                     <br>
-                                    <input type="text" class="form-control" name="<?php echo $columns[6]; ?>" placeholder="">
+                                    <input type="text" class="form-control" name="<?php echo $columns[6]; ?>" placeholder="450067">
                                 </div>
 
                                 <div class="col-lg-2"> <!-- TOOL QUANTITY -->
@@ -84,8 +86,8 @@
                                     <label for="<?php echo $columns[7]; ?>" class="col-form-label"><?php echo $columns_strrep[7]; ?></label>
                                     <br>
                                     <select class="form-control" name="<?php echo $columns[7]; ?>">
-                                        <?php foreach ($assessments as $assessment) {
-                                            echo '<option>$assessment</option';
+                                        <?php foreach ($condition_assessments as $ca) {
+                                            echo '<option value='.$ca["id"].'>'.$ca["assessment"].'</option>';
                                         } ?>
                                     </select>
                                 </div>
@@ -95,7 +97,7 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="text" class="form-control" name="<?php echo $columns[9]; ?>" placeholder="0.00"/>
+                                        <input type="text" class="form-control" name="<?php echo $columns[9]; ?>" placeholder="0.00" required>
                                     </div>
                                 </div>
                             </div>
@@ -106,14 +108,14 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="text" class="form-control" name="<?php echo $columns[10]; ?>" placeholder="0.00"/>
+                                        <input type="text" class="form-control" name="<?php echo $columns[10]; ?>" placeholder="0.00" required>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4"> <!-- SPOT INVENTORY DATE -->
                                     <label for="<?php echo $columns[11]; ?>" class="col-form-label"><?php echo $columns_strrep[11]; ?></label>
                                     <br>
-                                    <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" name="<?php echo $columns[11]; ?>">
+                                    <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" name="<?php echo $columns[11]; ?>" required>
                                 </div>
                             </div>
 
