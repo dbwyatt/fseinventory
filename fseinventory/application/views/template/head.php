@@ -17,6 +17,9 @@
 
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
+		<script src="<?php echo base_url(); ?>js/jquery.toolbar.js"></script>
+		<link href="<?php echo base_url(); ?>css/jquery.toolbar.css" rel="stylesheet" />
+
 		<?php 
 			foreach($_js as $js){
 				echo "<script type='text/javascript' src='" . base_url() . "js/" . $js . ".js'></script>";
