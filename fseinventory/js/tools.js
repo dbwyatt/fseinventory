@@ -28,22 +28,12 @@ $(function() {
             method: 'GET',
             success: function(response) {
                 $('body').append(response);
-                $('#tool_modal').modal("show");
-                $('#tool_modal').on('hidden.bs.modal', function (e) {
-                    $('#tool_modal').remove();
+                $('#add_tool_modal').modal("show");
+                $('#add_tool_modal').on('hidden.bs.modal', function (e) {
+                    $('#add_tool_modal').remove();
                 });
             }
         });
-    });
-
-    // show edit buttons
-    $('#edit_tools').click(function(){
-
-        var txt = $(".edit_tools_btn").is(':visible') ? 'Done editing' : 'Edit Tools';
-        $('#edit_tools').text(txt);
-        $('#edit_tools_btn').toggle();
-        // $('.edit_tools_btn').show();
-
     });
 
     // ajax open edit tool entry form
@@ -53,13 +43,17 @@ $(function() {
             method: 'GET',
             success: function(response) {
                 $('body').append(response);
-                $('#tool_modal').modal("show");
-                $('#tool_modal').on('hidden.bs.modal', function (e) {
-                    $('#tool_modal').remove();
+                $('#edit_tool_modal').modal("show");
+                $('#edit_tool_modal').on('hidden.bs.modal', function (e) {
+                    $('#edit_tool_modal').remove();
                 });
             }
         });
     });
 
+    $('#priceInput1').change(function(){
+        $('#priceInput1').val(parseFloat($('#priceInput1').val()).toFixed(2));});
+    $('#priceInput2').change(function(){
+        $('#priceInput2').val(parseFloat($('#priceInput2').val()).toFixed(2));});
 
 });

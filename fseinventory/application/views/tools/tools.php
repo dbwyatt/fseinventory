@@ -41,8 +41,6 @@
 						echo "<tr>";
 						foreach($tool as $t)
 							echo "<td>$t </td>";
-
-						// echo '<td><button type="button" class="btn btn-info edit_tools_btn">Edit Entry</button></td>';
 						
 						echo "</tr>";
 					}

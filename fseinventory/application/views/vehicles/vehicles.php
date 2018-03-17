@@ -7,8 +7,8 @@
 <div class="main">
 	<div class="content">
 		<div class="float_right">
-			<button type="button" class="btn btn-primary">+ Add Entry</button>
-			<button type="button" class="btn btn-info">Edit Entry</button>
+			<button id="add_vehicle" type="button" class="btn btn-primary">+ Add Vehicle</button>
+			<button id="edit_vehicle" type="button" class="btn btn-info">Edit Vehicle</button>
 		</div>
 		
 		<table id="vehicles-table" class="table table-striped table-bordered" cellspacing="0" width="100%">

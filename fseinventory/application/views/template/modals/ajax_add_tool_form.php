@@ -1,3 +1,9 @@
+<script>
+    $('#priceInput1').change(function(){
+        $('#priceInput1').val(parseFloat($('#priceInput1').val()).toFixed(2));});
+    $('#priceInput2').change(function(){
+        $('#priceInput2').val(parseFloat($('#priceInput2').val()).toFixed(2));});
+</script>
 
 <div class="modal fade wide_modalform" id="<?php echo $modal_id; ?>" tabindex="-1" role="dialog" aria-labelledby="modalform" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -17,124 +23,118 @@
                         <div class="container">
                             
                             <div class="row padding_top_medium">
+
                                 <div class="col-lg-4"> <!-- LOCATION -->
-                                    <label for="<?php echo $columns[1]; ?>" class="col-form-label"><?php echo $columns_strrep[1]; ?></label>
+                                    <label for="location_id" class="col-form-label">Location</label>
                                     <br>
-                                    <select class="form-control" name="<?php echo $columns[1]; ?>">
+                                    <select class="form-control" name="location_id">
                                         <option value="0">-- Select a Location --</option>
                                         <?php foreach ($locations as $l) {
-                                            echo '<option value='.$l["id"].'>'. $l["location"].'</option>';
+                                            echo '<option value='.$l["id"].' '.(isset($location_id)?($location_id==$l['id']?"selected":""):"").'>'. $l["location"].'</option>';
                                         } ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="row padding_bottom_medium">
                                 <div class="col-lg-4"> <!-- DEPARTMENT -->
-                                    <label for="<?php echo $columns[2]; ?>" class="col-form-label"><?php echo $columns_strrep[2]; ?></label>
+                                    <label for="department_id" class="col-form-label">Department</label>
                                     <br>
-                                    <select class="form-control" name="<?php echo $columns[2]; ?>">
+                                    <select class="form-control" name="department_id">
                                         <option value="0">-- Select a Department --</option>
                                         <?php foreach ($departments as $d) {
-                                            echo '<option value='.$d["id"].'>'.$d['department'].'</option>';
+                                            echo '<option value='.$d["id"].' '.(isset($department_id)?($department_id==$d['id']?"selected":""):"").'>'.$d['department'].'</option>';
                                         } ?>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row padding_top_medium">
-                                <div class="col-lg-6"> <!-- TOOL DESCRIPTION -->
-                                    <label for="<?php echo $columns[3]; ?>" class="col-form-label"><?php echo $columns_strrep[3]; ?></label>
+                                <div class="col-lg-6"> <!-- TOOL -->
+                                    <label for="tool" class="col-form-label">Tool</label>
                                     <br>
-                                    <input type="text" class="form-control" name="<?php echo $columns[3]; ?>" placeholder="tool name..." required>
+                                    <input type="text" class="form-control" name="tool" placeholder="tool name..." value="<?php echo((isset($tool)? $tool : "")) ?>" required>
                                 </div>
 
                                 <div class="col-lg-4"> <!-- TOOL MODEL -->
-                                    <label for="<?php echo $columns[4]; ?>" class="col-form-label"><?php echo $columns_strrep[4]; ?> #</label>
+                                    <label for="tool_model" class="col-form-label">Tool Model #</label>
                                     <br>
-                                    <input type="text" class="form-control" name="<?php echo $columns[4]; ?>" placeholder="">
+                                    <input type="text" class="form-control" name="tool_model" placeholder="" value="<?php echo((isset($tool_model)? $tool_model : "")) ?>">
                                 </div>
                             </div>
                             <div class="row padding_bottom_medium">
                                 <div class="col-lg-3"> <!-- TOOL SERIAL -->
-                                    <label for="<?php echo $columns[5]; ?>" class="col-form-label"><?php echo $columns_strrep[5]; ?> #</label>
+                                    <label for="tool_serial" class="col-form-label">Tool Serial #</label>
                                     <br>
-                                    <input type="text" class="form-control" name="<?php echo $columns[5]; ?>" placeholder="ACD111...">
+                                    <input type="text" class="form-control" name="tool_serial" placeholder="A1B2C3..." value="<?php echo((isset($tool_serial)? $tool_serial : "")) ?>">
                                 </div>
 
                                 <div class="col-lg-3"> <!-- ASSET TAG -->
-                                    <label for="<?php echo $columns[6]; ?>" class="col-form-label"><?php echo $columns_strrep[6]; ?></label>
+                                    <label for="asset_tag" class="col-form-label">Asset Tag</label>
                                     <br>
-                                    <input type="text" class="form-control" name="<?php echo $columns[6]; ?>" placeholder="450067">
+                                    <input type="text" class="form-control" name="asset_tag" placeholder="123456..." value="<?php echo((isset($asset_tag)? $asset_tag : "")) ?>">
                                 </div>
 
                                 <div class="col-lg-2"> <!-- TOOL QUANTITY -->
-                                    <label for="<?php echo $columns[8]; ?>" class="col-form-label"><?php echo $columns_strrep[8]; ?></label>
+                                    <label for="tool_quantity" class="col-form-label">Tool Quantity</label>
                                     <br>
-                                    <!-- <input type="text" class="form-control" name="<?php echo $columns[8]; ?>" placeholder=""> -->
-                                    <select class="form-control" name="<?php echo $columns[8]; ?>">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select class="form-control" name="tool_quantity">
+                                        <?php for ($i=1;$i<21;$i++){echo '<option value="'.$i.'"'.(isset($tool_quantity)?($tool_quantity==$i?"selected":""):"").'>'.$i.'</option>';} ?>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="row padding_medium">
                                 <div class="col-lg-4"> <!-- CONDITION ASSESSMENT -->
-                                    <label for="<?php echo $columns[7]; ?>" class="col-form-label"><?php echo $columns_strrep[7]; ?></label>
+                                    <label for="condition_assessment_id" class="col-form-label">Tool Condition</label>
                                     <br>
-                                    <select class="form-control" name="<?php echo $columns[7]; ?>">
+                                    <select class="form-control" name="condition_assessment_id">
                                         <?php foreach ($condition_assessments as $ca) {
-                                            echo '<option value='.$ca["id"].'>'.$ca["assessment"].'</option>';
+                                            echo '<option value='.$ca["id"].' '.(isset($condition_assessments)?($condition_assessments==$ca['id']?"selected":""):"").'>'.$ca["assessment"].'</option>';
                                         } ?>
                                     </select>
                                 </div>
 
                                 <div class="col-lg-4"> <!-- SINGLE UNIT VALUE -->
-                                    <label for="<?php echo $columns[9]; ?>" class="col-form-label"><?php echo $columns_strrep[9]; ?></label>
+                                    <label for="single_unit_value" class="col-form-label">Tool Value</label>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="text" class="form-control" name="<?php echo $columns[9]; ?>" placeholder="0.00" required>
+                                        <input id="priceInput1" type="number" class="form-control" name="single_unit_value" placeholder="0.00" value="<?php echo((isset($single_unit_value)? $single_unit_value : "")) ?>" required>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row padding_bottom_medium">
                                 <div class="col-lg-4"> <!-- TOTAL LINE VALUE -->
-                                    <label for="<?php echo $columns[10]; ?>" class="col-form-label"><?php echo $columns_strrep[10]; ?></label>
+                                    <label for="total_line_value" class="col-form-label">Group Total Value</label>
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="text" class="form-control" name="<?php echo $columns[10]; ?>" placeholder="0.00" required>
+                                        <input id="priceInput2" type="number" class="form-control" name="total_line_value" placeholder="0.00" value="<?php echo((isset($total_line_value)? $total_line_value : "")) ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4"> <!-- SPOT INVENTORY DATE -->
-                                    <label for="<?php echo $columns[11]; ?>" class="col-form-label"><?php echo $columns_strrep[11]; ?></label>
+                                    <label for="spot_inventory_date" class="col-form-label">Inventory Date</label>
                                     <br>
-                                    <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" name="<?php echo $columns[11]; ?>" required>
+                                    <input class="form-control" type="date" value="<?php echo(isset($spot_inventory_date)? date('Y-m-d',strtotime($spot_inventory_date)) : date('Y-m-d')); ?>" name="spot_inventory_date" required>
                                 </div>
                             </div>
 
                             <div class="row padding_top_medium">
                                 <div class="col-lg-4"> <!-- IMAGE -->
-                                    <label for="<?php echo $columns[12]; ?>" class="col-form-label"><?php echo $columns_strrep[12]; ?></label>
+                                    <label for="image" class="col-form-label">Image</label>
                                     <br>
-                                    <input type="file" name="<?php echo $columns[12]; ?>" class="form-control-file">
+                                    <input type="file" name="image" class="form-control-file">
                                 </div>
                             </div>
-
-                            
 
                         </div>
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard</button>
-                        <button type="submit" class="btn btn-primary">Save new row</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Discard tool</button>
+                        <button type="submit" class="btn btn-primary">Save new tool</button>
                     </div>
             </form>
         </div>
