@@ -11,6 +11,7 @@ run: rm
 	docker run -d -p 4306:3306 --network=$(NETWORK) --network-alias mariadb -v $(APPLICATION_PATH)/../fseinventory-db:/bitnami -e ALLOW_EMPTY_PASSWORD=yes --user root --name $(MARIADB_CONTAINER) bitnami/mariadb:latest
 	docker run -d -p 8181:80 -p 4433:443 --network=$(NETWORK) --network-alias phpmyadmin --name $(PHPMYADMIN_CONTAINER) bitnami/phpmyadmin:latest
 	docker run -d -p 8000:8000 --network=$(NETWORK) --network-alias myapp -v $(APPLICATION_PATH):/app -e CODEIGNITER_PROJECT_NAME=fseinventory --name $(APP_CONTAINER) bitnami/codeigniter:latest
+	npm install && npm start
 
 stop:
 	docker stop $(APP_CONTAINER)
