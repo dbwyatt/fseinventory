@@ -5,12 +5,7 @@
 </div>
 
 <div class="main">
-	<div class="content">
-		<div class="float_right">
-			<button id="add_tool" type="button" class="btn btn-primary">+ Add Tool</button>
-			<button id="edit_tools" type="button" class="btn btn-info">Edit Tool</button>
-		</div>
-		
+	<div class="content">		
 		<table id="tools-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>

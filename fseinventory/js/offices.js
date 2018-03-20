@@ -1,13 +1,13 @@
-const dataTable = require('./table');
-
 $(function() {
     'use strict';
 
+    const dataTable = require('./table');
+
     const tableOptions = {
-        fixedHeader: true,
-        autoFill: true,
-        colReorder: true,
-        rowReorder: true,
+        fixedHeader: {
+            header: true,
+            headerOffset: $('.navbar').outerHeight()
+        },
         responsive: true,
         select: true,
         buttons: [
@@ -81,7 +81,7 @@ $(function() {
         ]
     };
 
-    const table = dataTable.createTable('#office-table', tableOptions);
+    const table = dataTable.createTable('#offices-table', tableOptions);
     table.initializeButtons();
 
     // currency input managing
