@@ -35,6 +35,7 @@
         
         $query = $this->db->select('*')
                           ->from('offices')
+                          ->where('is_deleted', 0)
                           ->limit('60')
                           ->get();
 
