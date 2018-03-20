@@ -27,8 +27,8 @@ const paths = {
     src: 'fseinventory/js/**.js',
     dest: 'fseinventory/dist/js/'
   },
-  views: {
-    src: 'fseinventory/application/views/**/*.(php|html)'
+  application: {
+    src: 'fseinventory/application/**/*.(php|html)'
   }
 };
 
@@ -86,6 +86,41 @@ export function scripts(done) {
     // .pipe(gulp.dest(paths.scripts.dest));
 }
 
+export function scriptsWatch(done) {
+    glob(paths.scripts.src, function(err, files) {
+        if (err) done(err);
+        const tasks = files.map(function(entry) {
+            const [file, ...rest] = entry.split('/').reverse();
+            const b = browserify({
+                entries: [entry],
+                cache: {},
+                packageCache: {},
+                debug: true,
+                plugin: [watchify],
+                transform: ['babelify']
+            });
+
+            b.on('update', gulp.series(bundle, reload)).on('log', (msg) => console.log(msg));
+            return bundle();
+
+            function bundle() {
+                return b.bundle()
+                .on("error", err => {
+                    gutil.log("Browserify Error", gutil.colors.red(err.message));
+                    done(err);
+                })
+                .pipe(source(file))
+                .pipe(buffer())
+                .pipe(sourcemaps.init({loadMaps: true}))
+                .pipe(uglify())
+                .pipe(sourcemaps.write('./maps'))
+                .pipe(gulp.dest(paths.scripts.dest));
+            }
+        });
+        es.merge(tasks).on('end', done);
+    });
+}
+
 function serve(done) {
     browserSync.init({
         proxy: "localhost:8000"
@@ -94,9 +129,9 @@ function serve(done) {
 }
 
 function watch() {
-  gulp.watch(paths.scripts.src, gulp.series(scripts, reload));
+  // gulp.watch(paths.scripts.src, gulp.series(scripts, reload));
   gulp.watch(paths.styles.src, gulp.series(styles));
-  gulp.watch(paths.views.src, reload);
+  gulp.watch(paths.application.src, reload);
 }
 
 function reload(done) {
@@ -105,7 +140,7 @@ function reload(done) {
     done();
 }
 
-gulp.task('watch', gulp.series(clean, styles, scripts, serve, watch));
+gulp.task('watch', gulp.series(clean, styles, scriptsWatch, serve, watch));
 
 const build = gulp.series(clean, gulp.parallel(styles, scripts));
 gulp.task('build', build);
