@@ -24,7 +24,7 @@ class Vehicles extends MY_Controller {
 		$this->load->model('vehicles_model');
 		
 		// Modal Settings
-		$data['modal_id'] = "add_vehicles_modal";
+		$data['modal_id'] = "add_vehicle_modal";
 		$data['modal_title'] = "Add a New Vehicle";
 
 		$data['columns_strrep'] = $this->vehicles_model->get_columns('vehicles');
@@ -61,7 +61,7 @@ class Vehicles extends MY_Controller {
 		$this->load->model('vehicles_model');
 		
 		// Modal Settings
-		$data['modal_id'] = "edit_vehicles_modal";
+		$data['modal_id'] = "edit_vehicle_modal";
 		$data['modal_title'] = "Edit Vehicle - <?php echo $vehicle; ?>"; //<-pass in name of item
 
 		$data['columns_strrep'] = $this->vehicles_model->get_columns('vehicles');

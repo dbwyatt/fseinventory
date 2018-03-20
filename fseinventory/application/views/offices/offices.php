@@ -6,11 +6,11 @@
 
 <div class="main">
 	<div class="content">
-		<table id="office-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<table id="offices-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<?php
-					foreach($office_columns as $column) {
+					foreach($offices_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";
@@ -21,7 +21,7 @@
 			<tfoot>
 				<tr>
 				<?php
-					foreach($office_columns as $column) {
+					foreach($offices_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";
