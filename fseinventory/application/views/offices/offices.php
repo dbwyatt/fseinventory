@@ -10,7 +10,7 @@
 			<thead>
 				<tr>
 				<?php
-					foreach($office_columns as $column) {
+					foreach($offices_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";
@@ -21,7 +21,7 @@
 			<tfoot>
 				<tr>
 				<?php
-					foreach($office_columns as $column) {
+					foreach($offices_columns as $column) {
 						echo "<th>";
 						echo "$column";
 						echo "</th>";

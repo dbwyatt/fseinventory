@@ -18,7 +18,7 @@
                 </button>
           
             </div>
-                <form action="office/update_entry" method="post">
+                <form action="offices/update_entry" method="post">
                     <div class="modal-body">
                         <div class="container">
 
@@ -102,7 +102,7 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input id="priceInput1" type="number" class="form-control" name="single_unit_value" placeholder="0.00" value="<?php echo((isset($single_unit_value)? $single_unit_value : "")) ?>" required>
+                                        <input id="priceInput3" type="number" class="form-control" name="single_unit_value" placeholder="0.00" value="<?php echo((isset($single_unit_value)? $single_unit_value : "")) ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                     <br>
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input id="priceInput2" type="number" class="form-control" name="total_line_value" placeholder="0.00" value="<?php echo((isset($total_line_value)? $total_line_value : "")) ?>" required>
+                                        <input id="priceInput4" type="number" class="form-control" name="total_line_value" placeholder="0.00" value="<?php echo((isset($total_line_value)? $total_line_value : "")) ?>" required>
                                     </div>
                                 </div>
 

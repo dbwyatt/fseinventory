@@ -18,7 +18,7 @@
                 </button>
           
             </div>
-                <form action="office/add_new_entry_to_db" method="post">
+                <form action="offices/add_new_entry_to_db" method="post">
                     <div class="modal-body">
                         <div class="container">
                             
