@@ -59,7 +59,8 @@ export function scripts(done) {
                     packageCache: {},
                     debug: true,
                     plugin: [watchify],
-                    transform: ['babelify']
+                    transform: ['babelify'],
+                    paths: ['./node_modules', './fseinventory/js']
                 })
                 .bundle()
                 .on("error", err => {
@@ -97,7 +98,8 @@ export function scriptsWatch(done) {
                 packageCache: {},
                 debug: true,
                 plugin: [watchify],
-                transform: ['babelify']
+                transform: ['babelify'],
+                paths: ['./node_modules', './fseinventory/js']
             });
 
             b.on('update', gulp.series(bundle, reload)).on('log', (msg) => console.log(msg));
