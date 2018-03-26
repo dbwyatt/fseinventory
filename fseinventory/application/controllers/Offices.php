@@ -55,13 +55,20 @@ class Offices extends MY_Controller {
 
 	}
 
-	public function edit_entry_ajax($office_item = NULL, $row_id = NULL) {
+	public function edit_entry_ajax($row_id = NULL) {
+		if ($row_id === NULL) {
+			// THROW INFORMATION BOX "Please highlight the row you wish to edit"
+			return;
+		}
 
 		$this->load->model('offices_model');
-		
+
+		// get current row data to edit
+		$row_data = $this->offices_model->select_offices_by_id($row_id);
+
 		// Modal Settings
 		$data['modal_id'] = "edit_office_item_modal";
-		$data['modal_title'] = "Edit Office Item - <?php echo $office_item; ?>"; //<-pass in name of item
+		$data['modal_title'] = "Edit Office Item - {$row_data['office_item']}";
 
 		$data['columns_strrep'] = $this->offices_model->get_columns('offices');
 		$data['columns'] = $this->offices_model->get_raw_columns('offices');
@@ -71,20 +78,10 @@ class Offices extends MY_Controller {
 		$data['departments'] = $this->offices_model->get_options('department', 'department', 'ASC');
 		$data['condition_assessments'] = $this->offices_model->get_options('condition_assessment', 'id', 'ASC');
 
-		// get current row data to edit
-		$row_id = 1;
-		if ($row_id !== NULL) {
-			$row_data = $this->offices_model->select_offices_by_id($row_id);
-		}
-		else {
-			// THROW INFORMATION BOX "Please highlight the row you wish to edit"
-		}
-
 		// and itemize each data value to display it in the form
 		foreach ($row_data as $item => $val) {
 			$data[$item] = $val;
 		}
-
 
 		$this->load->view('template/modals/ajax_edit_office_form', $data);
 	}

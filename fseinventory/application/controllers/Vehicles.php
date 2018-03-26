@@ -56,13 +56,19 @@ class Vehicles extends MY_Controller {
 
 	}
 
-	public function edit_entry_ajax($vehicle = NULL, $row_id = NULL) {
-
+	public function edit_entry_ajax($row_id = NULL) {
+		if ($row_id === NULL) {
+			// THROW INFORMATION BOX "Please highlight the row you wish to edit"
+			return;
+		}
 		$this->load->model('vehicles_model');
 		
+		// get current row data to edit
+		$row_data = $this->vehicles_model->select_vehicles_by_id($row_id);
+
 		// Modal Settings
 		$data['modal_id'] = "edit_vehicle_modal";
-		$data['modal_title'] = "Edit Vehicle - <?php echo $vehicle; ?>"; //<-pass in name of item
+		$data['modal_title'] = "Edit Vehicle - ".ucwords(strtolower($row_data['vehicle_make']))." ".ucwords(strtolower($row_data['vehicle_model']));
 
 		$data['columns_strrep'] = $this->vehicles_model->get_columns('vehicles');
 		$data['columns'] = $this->vehicles_model->get_raw_columns('vehicles');
@@ -73,20 +79,10 @@ class Vehicles extends MY_Controller {
 		$data['condition_assessments'] = $this->vehicles_model->get_options('condition_assessment', 'id', 'ASC');
 		$data['states_index'] = $this->vehicles_model->get_options('states_index', 'state', 'ASC');
 
-		// get current row data to edit
-		$row_id = 17;
-		if ($row_id !== NULL) {
-			$row_data = $this->vehicles_model->select_vehicles_by_id($row_id);
-		}
-		else {
-			// THROW INFORMATION BOX "Please highlight the row you wish to edit"
-		}
-
 		// and itemize each data value to display it in the form
 		foreach ($row_data as $item => $val) {
 			$data[$item] = $val;
 		}
-		debug($row_data);
 
 		$this->load->view('template/modals/ajax_edit_vehicle_form', $data);
 	}

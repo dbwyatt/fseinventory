@@ -32,17 +32,24 @@ $(function() {
             {
                 text: 'Edit',
                 action: function(e, dt, node, config) {
-                    $.ajax({
-                        url: base_url + 'offices/edit_entry_ajax',
-                        method: 'GET',
-                        success: function(response) {
-                            $('body').append(response);
-                            $('#edit_office_item_modal').modal('show');
-                            $('#edit_office_item_modal').on('hidden.bs.modal', function (e) {
-                                $('#edit_office_item_modal').remove();
-                            });
-                        }
-                    });
+                    const selection = dt.row({selected: true}).node();
+                    const id = selection && $(selection).attr('data-id') || false;
+                    if (selection && id) {
+                        $.ajax({
+                            url: base_url + `offices/edit_entry_ajax/${id}`,
+                            method: 'GET',
+                            success: function(response) {
+                                $('body').append(response);
+                                $('#edit_office_item_modal').modal('show');
+                                $('#edit_office_item_modal').on('hidden.bs.modal', function (e) {
+                                    $('#edit_office_item_modal').remove();
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        $.notify('Please select a row to edit', 'warning');
+                    }
                 },
                 type: 'actions',
                 icon: 'edit'

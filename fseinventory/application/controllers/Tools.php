@@ -54,13 +54,20 @@ class Tools extends MY_Controller {
 
 	}
 
-	public function edit_entry_ajax($tool = NULL, $row_id = NULL) {
+	public function edit_entry_ajax($row_id = NULL) {
+		if ($row_id === NULL) {
+			// THROW INFORMATION BOX "Please highlight the row you wish to edit"
+			return;
+		}
 
 		$this->load->model('tools_model');
 		
+		// get current row data to edit
+		$row_data = $this->tools_model->select_tools_by_id($row_id);
+
 		// Modal Settings
 		$data['modal_id'] = "edit_tool_modal";
-		$data['modal_title'] = "Edit Tool Record - <?php echo $tool; ?>"; //<-pass in name of item
+		$data['modal_title'] = "Edit Tool Record - {$row_data['tool']}"; //<-pass in name of item
 
 		$data['columns_strrep'] = $this->tools_model->get_columns('tools');
 		$data['columns'] = $this->tools_model->get_raw_columns('tools');
@@ -69,15 +76,6 @@ class Tools extends MY_Controller {
 		$data['locations'] = $this->tools_model->get_options('location', 'location', 'ASC');
 		$data['departments'] = $this->tools_model->get_options('department', 'department', 'ASC');
 		$data['condition_assessments'] = $this->tools_model->get_options('condition_assessment', 'id', 'ASC');
-
-		// get current row data to edit
-		$row_id = 7;
-		if ($row_id !== NULL) {
-			$row_data = $this->tools_model->select_tools_by_id($row_id);
-		}
-		else {
-			// THROW INFORMATION BOX "Please highlight the row you wish to edit"
-		}
 
 		// and itemize each data value to display it in the form
 		foreach ($row_data as $item => $val) {

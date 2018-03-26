@@ -32,17 +32,24 @@ $(function() {
             {
                 text: 'Edit',
                 action: function(e, dt, node, config) {
-                    $.ajax({
-                        url: base_url + 'vehicles/edit_entry_ajax',
-                        method: 'GET',
-                        success: function(response) {
-                            $('body').append(response);
-                            $('#edit_vehicle_modal').modal('show');
-                            $('#edit_vehicle_modal').on('hidden.bs.modal', function (e) {
-                                $('#edit_vehicle_modal').remove();
-                            });
-                        }
-                    });
+                    const selection = dt.row({selected: true}).node();
+                    const id = selection && $(selection).attr('data-id') || false;
+                    if (selection && id) {
+                        $.ajax({
+                            url: base_url + `vehicles/edit_entry_ajax/${id}`,
+                            method: 'GET',
+                            success: function(response) {
+                                $('body').append(response);
+                                $('#edit_vehicle_modal').modal('show');
+                                $('#edit_vehicle_modal').on('hidden.bs.modal', function (e) {
+                                    $('#edit_vehicle_modal').remove();
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        $.notify('Please select a row to edit', 'warning');                        
+                    }
                 },
                 type: 'actions',
                 icon: 'edit'
