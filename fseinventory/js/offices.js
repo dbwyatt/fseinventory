@@ -1,7 +1,8 @@
 $(function() {
     'use strict';
 
-    const dataTable = require('./table');
+    const loader = require('loader');
+    const dataTable = require('table');
 
     const tableOptions = {
         fixedHeader: {
@@ -81,8 +82,7 @@ $(function() {
         ]
     };
 
-    const table = dataTable.createTable('#offices-table', tableOptions);
-    table.initializeButtons();
+    dataTable.createTable('#offices-table', tableOptions);
 
     // currency input managing
     $('#priceInput1').change(function(){

@@ -147,3 +147,36 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color:white;
 }
 /*--------------*/
+
+
+.loader {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column;
+	background: #ffffff;
+	max-width: 500px;
+	padding: 75px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 5px grey;
+	margin: 5px auto;
+}
+
+.loader .spinner {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: loader 2s linear infinite;
+}
+
+.loader span {
+	font-size: 1.4em;
+	margin-top: 1.1em;
+}
+
+@keyframes loader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
