@@ -31,6 +31,21 @@
 							<li class="nav-item <?php echo strtolower($this->uri->segment(1)) == 'vehicles' ? 'active' : '' ?>">
 								<a class="nav-link" href="<?php echo base_url('vehicles'); ?>">Vehicles</a>
 							</li>
+							<li class="nav-item">
+								<a class="nav-link divider">|</a>
+							</li> <!-- le pipe -->
+
+	                        <!-- ADMINISTRATIVE OPTIONS -->
+							<li class="dropdown nav-item pointer_h">
+	                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Tools</a>
+	                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/create_new_user'); ?>">Add New User</a>
+	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/privileges'); ?>">User Privileges</a>
+	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/remove_user'); ?>">Remove User</a>
+	                                <div class="dropdown-divider"></div>
+	                                <a class="dropdown-item" href="<?php echo base_url('admin/removed_records'); ?>">Removed Records</a>
+	                            </div>
+	                        </li>
 						<?php } ?>
 					</ul>
 
@@ -48,7 +63,7 @@
 	                        
 	                        <li class="dropdown">
 								<!-- ACCOUNT / USER -->
-	                            <a class="dropdown-toggle" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                            <a class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                                <?php echo $auth_username; ?>
 	                            </a>
 	                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">

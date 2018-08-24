@@ -98,7 +98,7 @@
 .dropdown-toggle::after {
 	margin-right: 5px;
 	vertical-align: middle;
-	transition: transform .5s;
+	transition: transform .3s;
 }
 .dropdown.show .dropdown-toggle::after {
 	transform: rotate(-180deg);
