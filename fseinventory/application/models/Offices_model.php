@@ -7,7 +7,7 @@
 	public function get_columns($table_name = NULL) {
 		$result = $this->db->list_fields($table_name);
 		foreach($result as $field) {
-			$data[] = ucwords(str_replace('_', ' ', $field));
+			$data[$field] = ucwords(str_replace('_', ' ', $field));
 		}
 		return $data;
 	}

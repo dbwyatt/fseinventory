@@ -125,7 +125,8 @@ export function scriptsWatch(done) {
 
 function serve(done) {
     browserSync.init({
-        proxy: "localhost:8000"
+        proxy: "localhost:8000",
+        browser: "chrome.exe"
     });
     done();
 }
