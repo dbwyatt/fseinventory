@@ -75,12 +75,6 @@
 	                            </div>
 	                        </li>
 						</ul>
-					<?php } else { ?>
-						<ul class="navbar-nav user_tools">
-							<li class="nav-item">
-								<a href="<?php echo base_url('usermanagement/create_new_user'); ?>">Create Account</a>
-							</li>
-						</ul>
 					<?php } ?>
 				
 				</div>
