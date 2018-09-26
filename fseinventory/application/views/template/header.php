@@ -67,19 +67,17 @@
 	                                <?php echo $auth_username; ?>
 	                            </a>
 	                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">Account</a>
-	                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">Settings</a>
+                                <?php if (isset($auth_role) && $auth_role == 'admin') { ?>
+                                    <a class="dropdown-item" href="<?php echo base_url('usermanagement/create_new_user'); ?>">Create Account</a>
+                                    <div class="dropdown-divider"></div>
+                                <?php } ?>
+                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">Account</a>
+                                <a class="dropdown-item" href="<?php echo base_url('usermanagement/profile/' . $auth_username); ?>">Settings</a>
 	                            	<div class="dropdown-divider"></div>
 	                            	<!-- LOGOUT -->
 	                            	<a class="dropdown-item" href="<?php echo base_url('authenticate/logout'); ?>">Logout</a>
 	                            </div>
 	                        </li>
-						</ul>
-					<?php } else { ?>
-						<ul class="navbar-nav user_tools">
-							<li class="nav-item">
-								<a href="<?php echo base_url('usermanagement/create_new_user'); ?>">Create Account</a>
-							</li>
 						</ul>
 					<?php } ?>
 				
