@@ -29,7 +29,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['levels_and_roles'] = [
 	//'1' => 'customer',
-	'6' => 'manager',
+	'3' => 'viewer',
+	'6' => 'limited_admin',
 	'9' => 'admin'
 ];
 
@@ -72,7 +73,7 @@ $config['add_acl_query_to_auth_functions'] = FALSE;
 | 
 */
 
-$config['max_allowed_attempts'] = 5;
+$config['max_allowed_attempts'] = 10;
 
 /*
 | -----------------------------------------------------------------

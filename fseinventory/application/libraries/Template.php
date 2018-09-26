@@ -27,8 +27,8 @@ class Template extends MY_Controller {
 		$this->add('_js', 'global');
 		
 		foreach($views as $view) {
-			$this->add('_css', $view);
-			$this->add('_js', $view);
+            file_exists(dirname(__FILE__) . '/../../css/' . $view . '.css') && $this->add('_css', $view);
+            file_exists(dirname(__FILE__) . '/../../js/' . $view . '.js') && $this->add('_js', $view);
 		}
 
 		if ( !$this->template_data['_title'] ) {

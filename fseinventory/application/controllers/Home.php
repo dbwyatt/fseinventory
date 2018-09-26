@@ -5,8 +5,11 @@ class Home extends MY_Controller {
 
 	public function index()
 	{
-		$this->template->setAll('FSE');
-		$this->template->load('home/home');
+		if($this->require_role('admin')) {			
+			
+			$this->template->setAll('FSE');
+			$this->template->load('home/home');
+		}
 	}
 
 	

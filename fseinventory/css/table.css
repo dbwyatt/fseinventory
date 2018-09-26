@@ -1,0 +1,11 @@
+[role='row'].green {
+	background-color: rgb(196, 215, 155);
+}
+
+[role='row'].red {
+	background-color: rgb(242, 220, 219);
+}
+
+[role='row'].blue {
+	background-color: rgb(197, 217, 241);
+}

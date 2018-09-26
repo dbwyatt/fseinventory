@@ -153,7 +153,7 @@ class Authenticate extends MY_Controller
 
 	// receive user_data from $POST on form submit via:
 	// views/user_management/create_new_user.php
-	public function create_user($user_data)
+	public function create_user()
 	{
 		$this->is_logged_in();
 
@@ -162,6 +162,9 @@ class Authenticate extends MY_Controller
 		$this->load->model('auth/authenticate_model');
 		$this->load->model('auth/validation_callables');
 		$this->load->library('form_validation');
+
+		// grab post data
+		$user_data = $_POST;
 
 		$this->form_validation->set_data($user_data);
 
@@ -209,7 +212,7 @@ class Authenticate extends MY_Controller
 		if($this->form_validation->run())
 		{
 			$user_data['passwd']     = $this->authentication->hash_passwd($user_data['passwd']);
-			$user_data['user_id']    = $this->authentication_model->get_unused_id();
+			$user_data['user_id']    = $this->authenticate_model->get_unused_id();
 			$user_data['created_at'] = date('Y-m-d H:i:s');
 
 			// If username is not used, it must be entered into the record as NULL
@@ -223,6 +226,7 @@ class Authenticate extends MY_Controller
 
 			if($this->db->affected_rows() == 1) // BOOTSTRAP NOTIFY
 				echo '<h1>Congratulations</h1>' . '<p>User ' . $user_data['username'] . ' was created.</p>';
+				//redirect(base_url('home'));
 		}
 		else
 		{
@@ -230,8 +234,6 @@ class Authenticate extends MY_Controller
 			echo '<h1>User Creation Error(s)</h1>' . validation_errors();
 		}
 
-		// once user is successfully created, redirect them elsewhere
-		redirect(base_url('home'));
 
 	}
 	

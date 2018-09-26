@@ -2,10 +2,10 @@
 {
 	display: flex;
 	justify-content: center;
-	background-color: lightgrey;
+	/*background-color: #313332;*/
+	/*color: white;*/
 	padding: 35px 0;
-	border-top: 1px solid #009933;
-
+	/*border-top: 3px solid #DDE04A;*/
 	width:100%;
 	height:100px;
 	position:absolute;
