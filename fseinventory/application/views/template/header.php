@@ -6,7 +6,7 @@
 
 			<nav class="navbar fixed-top navbar-expand-xl navbar-light">
 				<a class="navbar-brand" href="<?php echo base_url('home'); ?>">
-					<img src="http://files.fseinfo.net/fse_logo.jpg" height="50">
+					<img src="<?php echo base_url() . 'images/fse_logo.jpg' ?>" height="50">
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
