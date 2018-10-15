@@ -27,10 +27,10 @@ if (ENVIRONMENT === 'development') {
 	$config['base_url'] = "http://" . $_SERVER['HTTP_HOST'] . "/";
 }
 else if (ENVIRONMENT === 'testing') {
-	$config['base_url'] = "https://" . $_SERVER['HTTP_HOST'] . "/fseinventory/testing/";
+	$config['base_url'] = "https://" . $_SERVER['HTTP_HOST'] . "/inventory/";
 }
 else {
-	$config['base_url'] = "https://" . $_SERVER['HTTP_HOST'] . "/fseinventory/";
+	$config['base_url'] = "https://" . $_SERVER['HTTP_HOST'] . "/inventory/";
 }
 
 /*
